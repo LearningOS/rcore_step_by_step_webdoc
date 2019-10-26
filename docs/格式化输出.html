@@ -1,0 +1,634 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3. 格式化输出 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="中断异常.html" />
+    
+    
+    <link rel="prev" href="最小化内核.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="独立式可执行程序.html">
+            
+                <a href="独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="最小化内核.html">
+            
+                <a href="最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="格式化输出.html">
+            
+                <a href="格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="中断异常.html">
+            
+                <a href="中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Trap.html">
+            
+                <a href="Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="时钟中断.html">
+            
+                <a href="时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="内存分配.html">
+            
+                <a href="内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="页表简介.html">
+            
+                <a href="页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="内核线程.html">
+            
+                <a href="内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="线程调度.html">
+            
+                <a href="线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="创建页表.html">
+            
+                <a href="创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="用户进程.html">
+            
+                <a href="用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="命令行.html">
+            
+                <a href="命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="命令行——输出.html">
+            
+                <a href="命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="命令行——输入（信号量）.html">
+            
+                <a href="命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="命令行——执行程序.html">
+            
+                <a href="命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >3. 格式化输出</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;"><b></b>&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;</a></li><ul><li><span class="title-icon "></span><a href="#&#x6982;&#x8981;"><b></b>&#x6982;&#x8981;</a></li><li><span class="title-icon "></span><a href="#&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"><b></b>&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;</a></li><li><span class="title-icon "></span><a href="#&#x5B9E;&#x73B0;-println"><b></b>&#x5B9E;&#x73B0; println!</a></li><li><span class="title-icon "></span><a href="#&#x9884;&#x544A;"><b></b>&#x9884;&#x544A;</a></li></ul></ul></div><a href="#&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;"><a name="&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;" class="anchor-navigation-ex-anchor" href="#&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;</h1>
+<blockquote>
+<p>&#x672C;&#x7AE0;&#x4EE3;&#x7801;&#x5BF9;&#x5E94;&#x5206;&#x652F;&#xFF1A;fmt-print</p>
+</blockquote>
+<h2 id="&#x6982;&#x8981;"><a name="&#x6982;&#x8981;" class="anchor-navigation-ex-anchor" href="#&#x6982;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6982;&#x8981;</h2>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x6253;&#x5370;&#x7B80;&#x5355;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4E0D;&#x5E94;&#x8BE5;&#x6EE1;&#x8DB3;&#x4E8E;&#x6B64;&#x3002;&#x672C;&#x7AE0;&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0; rust &#x4E2D;&#x6700;&#x7ECF;&#x5178;&#x7684;&#x5B8F;&#xFF1A; <strong>println!</strong> &#xFF0C;&#x7528;&#x4E8E;&#x540E;&#x7EED;&#x7684;&#x8C03;&#x8BD5;&#x548C;&#x8F93;&#x51FA;&#x3002;&#x8FD9;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x5BF9; rust &#x7684;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x4E86;&#x89E3;&#xFF1A;</p>
+<ol>
+<li>&#x5B8F;&#x7684;&#x4F7F;&#x7528;&#x3002;</li>
+<li>trait &#x7684;&#x7279;&#x6027;&#x3002;</li>
+</ol>
+<h2 id="&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"><a name="&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;" class="anchor-navigation-ex-anchor" href="#&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B80;&#x5355;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x548C;&#x5B57;&#x7B26;&#x4E32;</h2>
+<p>&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5185;&#x5B9E;&#x73B0;&#x8FC7;&#x591A;&#x7684;&#x529F;&#x80FD;&#x4F1A;&#x4F7F;&#x5F97;&#x6587;&#x4EF6;&#x8FC7;&#x4E8E;&#x5197;&#x957F;&#xFF0C;&#x4E0D;&#x6613;&#x9605;&#x8BFB;&#x4E0E;&#x7EF4;&#x62A4;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#xFF08;&#x5728; main.rs &#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#xFF09;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6587;&#x4EF6;&#x7528;&#x4E8E;&#x7BA1;&#x7406; <strong>io</strong> &#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x4E3A; <strong>io</strong> &#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li><code>io.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> crate::sbi;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">putchar</span></span>(ch: <span class="hljs-keyword">char</span>) {
+    sbi::console_putchar(ch <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span> <span class="hljs-keyword">as</span> usize);
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">puts</span></span>(s: &amp;<span class="hljs-keyword">str</span>) {
+    <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s.chars() {
+        putchar(ch);
+    }
+}
+</code></pre>
+<ul>
+<li><code>lib.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> io;
+</code></pre>
+<p>&#x4FEE;&#x6539; <strong>rust_main</strong> &#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_main</span></span>() -&gt; ! {
+    crate::io::puts(<span class="hljs-string">&quot;666666&quot;</span>);
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x5C4F;&#x5E55;&#x6210;&#x529F;&#x8F93;&#x51FA;&#x4E86; <strong>666666</strong> &#xFF01;</p>
+<h2 id="&#x5B9E;&#x73B0;-println"><a name="&#x5B9E;&#x73B0;-println" class="anchor-navigation-ex-anchor" href="#&#x5B9E;&#x73B0;-println"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B9E;&#x73B0; <code>println!</code></h2>
+<ul>
+<li><code>io.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[macro_export]</span>
+<span class="hljs-built_in">macro_rules!</span> print {
+    ($($arg:tt)*) =&gt; ({
+        $crate::io::_print(<span class="hljs-built_in">format_args!</span>($($arg)*));
+    });
+}
+
+<span class="hljs-meta">#[macro_export]</span>
+<span class="hljs-built_in">macro_rules!</span> println {
+    () =&gt; ($crate::<span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;\n&quot;</span>));
+    ($($arg:tt)*) =&gt; ($crate::<span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;{}\n&quot;</span>, <span class="hljs-built_in">format_args!</span>($($arg)*)));
+}
+</code></pre>
+<p><code>#[macro_export]</code> &#x5B8F;&#x4F7F;&#x5F97;&#x5916;&#x90E8;&#x7684;&#x5E93;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5B8F;&#x3002; <code>format_args!</code> &#x5B8F;&#x53EF;&#x4EE5;&#x5C06; <code>print(...)</code> &#x5185;&#x7684;&#x90E8;&#x5206;&#x8F6C;&#x6362;&#x4E3A; <code>fmt::Arguments</code> &#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4EE5;&#x540E;&#x7EED;&#x6253;&#x5370;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x8FD8;&#x672A;&#x5B9E;&#x73B0;&#x7684;&#x51FD;&#x6570;&#xFF1A; <code>_print</code> &#x3002;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5341;&#x5206;&#x795E;&#x5947;&#xFF0C;&#x501F;&#x52A9;&#x4E86; rust &#x5947;&#x5999;&#x7684;&#x8BED;&#x6CD5;&#x3002;</p>
+<p>rust trait &#x6709;&#x70B9;&#x7C7B;&#x4F3C; C++ &#x7684;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0; trait &#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x7EE7;&#x627F;&#x62BD;&#x8C61;&#x7C7B;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x5B9E;&#x73B0;&#x4E86; <code>fmt::Write::write_str</code> &#xFF0C;trait &#x4F1A;&#x5E2E;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x5B9E;&#x73B0; <code>fmt::Write::write_fmt</code> &#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://doc.rust-lang.org/core/fmt/trait.Write.html" target="_blank">rust &#x5B98;&#x65B9;&#x6587;&#x6863; - core::fmt::Write</a> &#x548C; <a href="https://doc.rust-lang.org/book/ch10-02-traits.html" target="_blank">rust &#x5B98;&#x65B9;&#x6559;&#x7A0B; - Traits &#x90E8;&#x5206;</a></p>
+</blockquote>
+<ul>
+<li><code>io.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> core::fmt::{<span class="hljs-keyword">self</span>, Write};
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StdOut</span></span>;
+
+<span class="hljs-keyword">impl</span> fmt::Write <span class="hljs-keyword">for</span> StdOut {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">write_str</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, s: &amp;<span class="hljs-keyword">str</span>) -&gt; fmt::<span class="hljs-built_in">Result</span> {
+        puts(s);
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">_print</span></span>(args: fmt::Arguments) {
+    StdOut.write_fmt(args).unwrap();
+}
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x5728;&#x5916;&#x90E8;&#x4E2D;&#x4F7F;&#x7528; <code>io.rs</code> &#x4E2D;&#x7684;&#x5B8F;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728; <code>pub mod io</code> &#x7684;&#x4E0A;&#x65B9;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">mod</span> io;
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA9; <code>println!</code> &#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x201C;&#x9AD8;&#x96BE;&#x5EA6;&#x201D;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x6253;&#x5370; <strong>panic</strong> &#x4FE1;&#x606F;&#xFF1A;</p>
+<ul>
+<li><code>lang_items.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[panic_handler]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">panic</span></span>(info: &amp;PanicInfo) -&gt; ! {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;{}&quot;</span>, info);
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<ul>
+<li><code>init.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_main</span></span>() -&gt; ! {
+    <span class="hljs-keyword">let</span> a = <span class="hljs-string">&quot;Hello&quot;</span>;
+    <span class="hljs-keyword">let</span> b = <span class="hljs-string">&quot;World&quot;</span>;
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;{}, {}!&quot;</span>, a, b);
+    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;End of rust_main&quot;</span>);
+}
+</code></pre>
+<p>&#x518D;&#x6B21;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x7A0B;&#x5E8F;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-shell">Hello, World!
+panicked at &apos;End of rust_main&apos;, src/main.rs:25:5
+</code></pre>
+<h2 id="&#x9884;&#x544A;"><a name="&#x9884;&#x544A;" class="anchor-navigation-ex-anchor" href="#&#x9884;&#x544A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9884;&#x544A;</h2>
+<p>&#x5F53; CPU &#x8BBF;&#x95EE;&#x65E0;&#x6548;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x5730;&#x5740;&#xFF0C;&#x6216;&#x8FDB;&#x884C;&#x9664;&#x96F6;&#x64CD;&#x4F5C;&#xFF0C;&#x6216;&#x8005;&#x8FDB;&#x884C; <strong>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</strong> &#x65F6;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x4E2D;&#x65AD;&#x3002;&#x4E0B;&#x4E00;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4E2D;&#x65AD;&#x673A;&#x5236;&#x5BF9;&#x8FD9;&#x4E9B;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="最小化内核.html" class="navigation navigation-prev " aria-label="Previous page: 2. 最小化内核">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="中断异常.html" class="navigation navigation-next " aria-label="Next page: 4. 中断异常">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3. 格式化输出","level":"1.4","depth":1,"next":{"title":"4. 中断异常","level":"1.5","depth":1,"path":"docs/中断异常.md","ref":"docs/中断异常.md","articles":[{"title":"4.1 Trap","level":"1.5.1","depth":2,"path":"docs/Trap.md","ref":"docs/Trap.md","articles":[]},{"title":"4.2. 时钟中断","level":"1.5.2","depth":2,"path":"docs/时钟中断.md","ref":"docs/时钟中断.md","articles":[]}]},"previous":{"title":"2. 最小化内核","level":"1.3","depth":1,"path":"docs/最小化内核.md","ref":"docs/最小化内核.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"docs/格式化输出.md","mtime":"2019-10-13T07:50:27.015Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

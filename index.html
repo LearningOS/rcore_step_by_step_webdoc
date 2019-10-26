@@ -1,0 +1,547 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>0. 从零开始写 OS · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="docs/独立式可执行程序.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/独立式可执行程序.html">
+            
+                <a href="docs/独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/最小化内核.html">
+            
+                <a href="docs/最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="docs/格式化输出.html">
+            
+                <a href="docs/格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="docs/中断异常.html">
+            
+                <a href="docs/中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="docs/Trap.html">
+            
+                <a href="docs/Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="docs/时钟中断.html">
+            
+                <a href="docs/时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="docs/内存分配.html">
+            
+                <a href="docs/内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="docs/页表简介.html">
+            
+                <a href="docs/页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="docs/内核线程.html">
+            
+                <a href="docs/内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="docs/线程调度.html">
+            
+                <a href="docs/线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="docs/创建页表.html">
+            
+                <a href="docs/创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="docs/用户进程.html">
+            
+                <a href="docs/用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="docs/命令行.html">
+            
+                <a href="docs/命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="docs/命令行——输出.html">
+            
+                <a href="docs/命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="docs/命令行——输入（信号量）.html">
+            
+                <a href="docs/命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="docs/命令行——执行程序.html">
+            
+                <a href="docs/命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >0. 从零开始写 OS</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199;-os"><b></b>&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199; OS</a></li><ul><li><span class="title-icon "></span><a href="#&#x524D;&#x8A00;"><b></b>&#x524D;&#x8A00;</a></li><li><span class="title-icon "></span><a href="#&#x524D;&#x7F6E;&#x77E5;&#x8BC6;"><b></b>&#x524D;&#x7F6E;&#x77E5;&#x8BC6;</a></li><li><span class="title-icon "></span><a href="#&#x5982;&#x4F55;&#x4F7F;&#x7528;"><b></b>&#x5982;&#x4F55;&#x4F7F;&#x7528;</a></li><li><span class="title-icon "></span><a href="#reference"><b></b>reference</a></li></ul></ul></div><a href="#&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199;-os" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199;-os"><a name="&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199;-os" class="anchor-navigation-ex-anchor" href="#&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199;-os"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x5199; OS</h1>
+<h2 id="&#x524D;&#x8A00;"><a name="&#x524D;&#x8A00;" class="anchor-navigation-ex-anchor" href="#&#x524D;&#x8A00;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x524D;&#x8A00;</h2>
+<p>&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x8BB0;&#x5F55;&#x4E86;&#x4F7F;&#x7528; Rust &#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x5C0F;&#x578B;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#x3002;&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5305;&#x542B;&#x6240;&#x9700;&#x6240;&#x6709;&#x6240;&#x9700;&#x4EE3;&#x7801;&#x548C;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;&#x8BB2;&#x89E3;&#x3002;</p>
+<ul>
+<li><a href="https://github.com/LearningOS/rcore_step_by_step" target="_blank">&#x6E90;&#x4EE3;&#x7801;</a></li>
+<li><a href="https://learningos.github.io/rcore_step_by_step_doc" target="_blank">&#x6E90;&#x6587;&#x6863;</a></li>
+<li><a href="https://learningos.github.io/rcore_step_by_step_webdoc" target="_blank">web &#x6587;&#x6863;</a></li>
+</ul>
+<h2 id="&#x524D;&#x7F6E;&#x77E5;&#x8BC6;"><a name="&#x524D;&#x7F6E;&#x77E5;&#x8BC6;" class="anchor-navigation-ex-anchor" href="#&#x524D;&#x7F6E;&#x77E5;&#x8BC6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x524D;&#x7F6E;&#x77E5;&#x8BC6;</h2>
+<ul>
+<li>&#x7B80;&#x5355;&#x7684; Rust &#x8BED;&#x6CD5;&#xFF08;&#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x7684;&#x57FA;&#x7840;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x548C; C &#x7C7B;&#x4F3C;&#xFF0C;&#x6587;&#x7AE0;&#x4F1A;&#x4ECB;&#x7ECD;&#x5176;&#x65B0;&#x5947;&#x7684;&#x8BED;&#x6CD5;&#xFF09;</li>
+<li>RISCV &#x6C47;&#x7F16;&#xFF08;&#x7528;&#x7684;&#x4E0D;&#x591A;&#xFF09;</li>
+</ul>
+<h2 id="&#x5982;&#x4F55;&#x4F7F;&#x7528;"><a name="&#x5982;&#x4F55;&#x4F7F;&#x7528;" class="anchor-navigation-ex-anchor" href="#&#x5982;&#x4F55;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x4F7F;&#x7528;</h2>
+<p>&#x5728;&#x9605;&#x8BFB;&#x6587;&#x7AE0;&#x4EE5;&#x53CA;&#x590D;&#x73B0;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E86;&#x89E3; OS &#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528; <a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank">docker</a> &#xFF0C;&#x53EF;&#x4EE5;&#x7701;&#x53BB;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x7684;&#x529F;&#x592B;&#x3002;</p>
+<p>&#x5728;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <strong>Makefile</strong> &#xFF1A;</p>
+<pre><code class="lang-Makefile"><span class="hljs-section">docker:</span>
+    sudo docker run -it --mount type=bind,source=$(shell pwd)/..,destination=/mnt panqinglin/rust_riscv
+</code></pre>
+<p>&#x8FDB;&#x5165; docker &#x540E;&#xFF0C;&#x6267;&#x884C; <code>cd mnt</code> &#xFF0C;&#x5373;&#x53EF;&#x770B;&#x89C1;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5199;&#x4EE3;&#x7801;&#x5566;&#xFF01;</p>
+<blockquote>
+<p>&#x6BCF;&#x4E00;&#x7AE0;&#x6216;&#x5C0F;&#x8282;&#x5BF9;&#x5E94;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5728; <a href="https://github.com/LearningOS/rcore_step_by_step" target="_blank">git</a> &#x7684;&#x5206;&#x652F;&#x4E2D;&#x627E;&#x5230;</p>
+</blockquote>
+<h2 id="reference"><a name="reference" class="anchor-navigation-ex-anchor" href="#reference"><i class="fa fa-link" aria-hidden="true"></i></a>reference</h2>
+<ul>
+<li><a href="https://github.com/rcore-os/rCore" target="_blank">https://github.com/rcore-os/rCore</a></li>
+<li><a href="https://github.com/oscourse-tsinghua/rcore_plus/tree/lab8-rv32-tinyfs" target="_blank">https://github.com/oscourse-tsinghua/rcore_plus/tree/lab8-rv32-tinyfs</a></li>
+<li><a href="https://github.com/chyyuu/rcore_plus/tree/lab1-rv32-interrupt" target="_blank">https://github.com/chyyuu/rcore_plus/tree/lab1-rv32-interrupt</a> .. <a href="https://github.com/chyyuu/rcore_plus/tree/lab8-rv32-fs" target="_blank">https://github.com/chyyuu/rcore_plus/tree/lab8-rv32-fs</a></li>
+</ul>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="docs/独立式可执行程序.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1. 独立式可执行程序">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"0. 从零开始写 OS","level":"1.1","depth":1,"next":{"title":"1. 独立式可执行程序","level":"1.2","depth":1,"path":"docs/独立式可执行程序.md","ref":"docs/独立式可执行程序.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"README.md","mtime":"2019-10-19T10:06:32.469Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

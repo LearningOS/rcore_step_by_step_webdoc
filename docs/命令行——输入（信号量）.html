@@ -1,0 +1,894 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>11.2. 命令行——输入（信号量） · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="命令行——执行程序.html" />
+    
+    
+    <link rel="prev" href="命令行——输出.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="独立式可执行程序.html">
+            
+                <a href="独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="最小化内核.html">
+            
+                <a href="最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="格式化输出.html">
+            
+                <a href="格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="中断异常.html">
+            
+                <a href="中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Trap.html">
+            
+                <a href="Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="时钟中断.html">
+            
+                <a href="时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="内存分配.html">
+            
+                <a href="内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="页表简介.html">
+            
+                <a href="页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="内核线程.html">
+            
+                <a href="内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="线程调度.html">
+            
+                <a href="线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="创建页表.html">
+            
+                <a href="创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="用户进程.html">
+            
+                <a href="用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="命令行.html">
+            
+                <a href="命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="命令行——输出.html">
+            
+                <a href="命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12.2" data-path="命令行——输入（信号量）.html">
+            
+                <a href="命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="命令行——执行程序.html">
+            
+                <a href="命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11.2. 命令行——输入（信号量）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;"><b></b>&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;</a></li><ul><li><span class="title-icon "></span><a href="#&#x7528;&#x6237;-shell"><b></b>&#x7528;&#x6237; shell</a></li><li><span class="title-icon "></span><a href="#&#x5904;&#x7406;-sysread"><b></b>&#x5904;&#x7406; sys_read</a></li><li><span class="title-icon "></span><a href="#&#x7F13;&#x51B2;&#x533A;"><b></b>&#x7F13;&#x51B2;&#x533A;</a></li><li><span class="title-icon "></span><a href="#&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;"><b></b>&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;</a></li></ul></ul></div><a href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;"><a name="&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x5165;&#xFF08;&#x4FE1;&#x53F7;&#x91CF;&#xFF09;</h1>
+<blockquote>
+<p>&#x672C;&#x7AE0;&#x4EE3;&#x7801;&#x5BF9;&#x5E94; commit &#xFF1A;1e329bb3c5ad4d58a74837697d5e08ac4904d0bd</p>
+</blockquote>
+<h2 id="&#x7528;&#x6237;-shell"><a name="&#x7528;&#x6237;-shell" class="anchor-navigation-ex-anchor" href="#&#x7528;&#x6237;-shell"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7528;&#x6237; shell</h2>
+<pre><code class="lang-rust"><span class="hljs-comment">// in usr/rust/src/bin/shell.rs</span>
+
+<span class="hljs-meta">#![no_std]</span>
+<span class="hljs-meta">#![no_main]</span>
+
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> rust;
+
+<span class="hljs-keyword">use</span> rust::io::getc;
+
+<span class="hljs-keyword">const</span> LF: <span class="hljs-keyword">u8</span> = <span class="hljs-number">0x0au8</span>;
+<span class="hljs-keyword">const</span> CR: <span class="hljs-keyword">u8</span> = <span class="hljs-number">0x0du8</span>;
+
+<span class="hljs-comment">// IMPORTANT: Must define main() like this</span>
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() -&gt; <span class="hljs-keyword">i32</span> {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Rust user shell&quot;</span>);
+    <span class="hljs-keyword">loop</span> {
+        <span class="hljs-keyword">let</span> c = getc();
+        <span class="hljs-keyword">match</span> c {
+            LF | CR =&gt; {
+                <span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;{}&quot;</span>, LF <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>);
+                <span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;{}&quot;</span>, CR <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>)
+            }
+            _ =&gt; <span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;{}&quot;</span>, c <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>)
+        }
+    }
+}
+</code></pre>
+<p>&#x76EE;&#x524D;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#xFF1A;&#x5FAA;&#x73AF;&#x5224;&#x65AD;&#x662F;&#x5426;&#x6709;&#x5B57;&#x7B26;&#x8F93;&#x5165;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x56DE;&#x8F66;&#x7B26;&#x53F7;&#x6216;&#x8005;&#x6362;&#x884C;&#x7B26;&#x53F7;&#xFF0C;&#x6362;&#x884C;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x666E;&#x901A;&#x5B57;&#x7B26;&#x5C31;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x3002;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in usr/rust/src/io.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> STDIN: usize = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">getc</span></span>() -&gt; <span class="hljs-keyword">u8</span> {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> c = <span class="hljs-number">0u8</span>;
+    <span class="hljs-keyword">loop</span> {
+        <span class="hljs-keyword">let</span> len = syscall::sys_read(STDIN, &amp;<span class="hljs-keyword">mut</span> c, <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">match</span> len {
+            <span class="hljs-number">1</span> =&gt; <span class="hljs-keyword">return</span> c,
+            <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">continue</span>,
+            _ =&gt; <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;read stdin len = {}&quot;</span>, len),
+        }
+    }
+}
+
+<span class="hljs-comment">// in usr/rust/src/syscall.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sys_read</span></span>(fd : usize, base : *<span class="hljs-keyword">const</span> <span class="hljs-keyword">u8</span>, len : usize) -&gt; <span class="hljs-keyword">i32</span> {
+    sys_call(SyscallId::Read, fd, base <span class="hljs-keyword">as</span> usize , len , <span class="hljs-number">0</span>)
+}
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SyscallId</span></span> {
+    Read = <span class="hljs-number">63</span>,
+    Write = <span class="hljs-number">64</span>,
+    Exit = <span class="hljs-number">93</span>,
+}
+</code></pre>
+<p><code>getc</code> &#x53EA;&#x9700;&#x7B80;&#x5355;&#x7684;&#x5411; os &#x53D1;&#x8D77;&#x4E00;&#x4E2A; syscall &#x5373;&#x53EF;&#x3002;&#x6267;&#x884C; <code>make</code> &#x7F16;&#x8BD1;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x662F; os &#x7684;&#x5DE5;&#x4F5C;&#x4E86;&#x3002;</p>
+<h2 id="&#x5904;&#x7406;-sysread"><a name="&#x5904;&#x7406;-sysread" class="anchor-navigation-ex-anchor" href="#&#x5904;&#x7406;-sysread"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5904;&#x7406; sys_read</h2>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x68B3;&#x7406;&#x4E00;&#x4E0B;&#x5904;&#x7406; sys_read &#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x7531;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x901A;&#x8FC7; ecall &#x4EA7;&#x751F;&#x4E00;&#x4E2A; sys_call &#xFF0C;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x5224;&#x65AD;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A; sys_read &#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x5224;&#x65AD;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x5B57;&#x7B26;&#x3002;<ul>
+<li>&#x5982;&#x679C;&#x6709;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x8BE5;&#x5B57;&#x7B26;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x4F11;&#x7720;&#x8BE5;&#x7A0B;&#x5E8F;&#xFF0C;&#x7B49;&#x5F85;&#x4EA7;&#x751F;&#x952E;&#x76D8;&#x4E2D;&#x65AD;&#x3002;</li>
+</ul>
+</li>
+</ol>
+<p>&#x53EF;&#x4EE5;&#x9884;&#x89C1;&#x6211;&#x4EEC;&#x7684; syscall &#x5C06;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x5C06; syscall &#x7684;&#x5B9E;&#x73B0;&#x5168;&#x5806;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x4E0D;&#x4F18;&#x96C5;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7B80;&#x5316; <code>interrupt::syscall</code> &#xFF0C;&#x5E76;&#x521B;&#x5EFA; <code>syscall.rs</code> &#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in interrupt.rs</span>
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">syscall</span></span>(tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) {
+    <span class="hljs-keyword">let</span> ret = crate::syscall::syscall(
+        tf.x[<span class="hljs-number">17</span>],
+        [tf.x[<span class="hljs-number">10</span>], tf.x[<span class="hljs-number">11</span>], tf.x[<span class="hljs-number">12</span>]],
+        tf,
+    );
+    tf.sepc += <span class="hljs-number">4</span>;
+    tf.x[<span class="hljs-number">10</span>] = ret <span class="hljs-keyword">as</span> usize;
+}
+
+<span class="hljs-comment">// in syscall.rs</span>
+
+<span class="hljs-keyword">use</span> crate::context::TrapFrame;
+<span class="hljs-keyword">use</span> crate::process;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> SYS_READ: usize = <span class="hljs-number">63</span>;
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> SYS_WRITE: usize = <span class="hljs-number">64</span>;
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> SYS_EXIT: usize = <span class="hljs-number">93</span>;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">syscall</span></span>(id: usize, args: [usize;<span class="hljs-number">3</span>], tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) -&gt; isize {
+    <span class="hljs-keyword">match</span> id {
+        SYS_READ =&gt; {
+            <span class="hljs-keyword">return</span> sys_read(args[<span class="hljs-number">0</span>], args[<span class="hljs-number">1</span>] <span class="hljs-keyword">as</span> *<span class="hljs-keyword">mut</span> <span class="hljs-keyword">u8</span>, args[<span class="hljs-number">2</span>]);
+        },
+        SYS_WRITE =&gt; {
+            <span class="hljs-built_in">print!</span>(<span class="hljs-string">&quot;{}&quot;</span>, args[<span class="hljs-number">0</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        },
+        SYS_EXIT =&gt; {
+            sys_exit(args[<span class="hljs-number">0</span>]);
+        },
+        _ =&gt; {
+            <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;unknown syscall id {}&quot;</span>, id);
+        },
+    };
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sys_exit</span></span>(code: usize) {
+    process::exit(code);
+}
+
+<span class="hljs-comment">// in lib.rs</span>
+
+<span class="hljs-keyword">mod</span> syscall;
+
+<span class="hljs-comment">// fs/mod.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> stdio;
+</code></pre>
+<p>&#x6BCF;&#x4E00;&#x6B65;&#x770B;&#x8D77;&#x6765;&#x90FD;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x505A;&#x7684;&#x662F;&#x901A;&#x8FC7; <code>crate::fs::stdio::STDIN</code> &#x4E2D;&#x8BFB;&#x53D6;&#x7F13;&#x51B2;&#x533A;&#x5B57;&#x7B26;&#x3002;</p>
+<h2 id="&#x7F13;&#x51B2;&#x533A;"><a name="&#x7F13;&#x51B2;&#x533A;" class="anchor-navigation-ex-anchor" href="#&#x7F13;&#x51B2;&#x533A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7F13;&#x51B2;&#x533A;</h2>
+<p>&#x6240;&#x8C13;&#x7F13;&#x51B2;&#x533A;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x8BC6;&#x522B;&#x952E;&#x76D8;&#x4E2D;&#x65AD;&#xFF0C;&#x6BCF;&#x4EA7;&#x751F;&#x4E00;&#x6B21;&#x952E;&#x76D8;&#x4E2D;&#x65AD;&#xFF0C;&#x5C31;&#x5C06;&#x6309;&#x4E0B;&#x7684;&#x5B57;&#x7B26;&#x538B;&#x5165;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in stdio.rs</span>
+
+<span class="hljs-keyword">use</span> alloc::{ collections::VecDeque, sync::Arc };
+<span class="hljs-keyword">use</span> spin::Mutex;
+<span class="hljs-keyword">use</span> crate::process;
+<span class="hljs-keyword">use</span> crate::sync::condvar::*;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Stdin</span></span> {
+    buf: Mutex&lt;VecDeque&lt;<span class="hljs-keyword">char</span>&gt;&gt;,
+    pushed: Condvar,
+}
+
+<span class="hljs-keyword">impl</span> Stdin {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>() -&gt; <span class="hljs-keyword">Self</span> {
+        Stdin {
+            buf: Mutex::new(VecDeque::new()),
+            pushed: Condvar::new(),
+        }
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">push</span></span>(&amp;<span class="hljs-keyword">self</span>, ch: <span class="hljs-keyword">char</span>) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> lock = <span class="hljs-keyword">self</span>.buf.lock();
+        lock.push_back(ch);
+        <span class="hljs-built_in">drop</span>(lock);
+        <span class="hljs-keyword">self</span>.pushed.notify();
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">pop</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-keyword">char</span> {
+        <span class="hljs-keyword">loop</span>{
+            <span class="hljs-keyword">let</span> ret = <span class="hljs-keyword">self</span>.buf.lock().pop_front();
+            <span class="hljs-keyword">match</span> ret {
+                <span class="hljs-literal">Some</span>(ch) =&gt; {
+                    <span class="hljs-keyword">return</span> ch;
+                },
+                <span class="hljs-literal">None</span> =&gt; {
+                    <span class="hljs-keyword">self</span>.pushed.wait();
+                },
+            }
+        }
+    }
+}
+
+<span class="hljs-keyword">use</span> lazy_static::*;
+lazy_static!{
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">ref</span> STDIN: Arc&lt;Stdin&gt; = Arc::new(Stdin::new());
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x6B21; pop &#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x5B58;&#x5728;&#x5B57;&#x7B26;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x8FD4;&#x56DE;&#xFF1B;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x5C06;&#x8BE5;&#x7EBF;&#x7A0B;&#x7761;&#x7720;&#xFF08;&#x4E0D;&#x518D;&#x52A0;&#x5165;&#x8C03;&#x5EA6;&#xFF09;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4EA7;&#x751F;&#x952E;&#x76D8;&#x4E2D;&#x65AD;&#xFF08;&#x6709;&#x5B57;&#x7B26;&#x8F93;&#x5165;&#xFF09;&#xFF0C;&#x5219;&#x5524;&#x9192;&#x4F11;&#x7720;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4FE1;&#x53F7;&#x91CF;&#x5BF9;&#x8FD9;&#x4E9B;&#x4E8B;&#x52A1;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;&#x4E3A;&#x4E86;&#x66F4;&#x6E05;&#x6670;&#x7684;&#x7406;&#x89E3;&#x8FD9;&#x91CC;&#x7684; push &#x548C; pop &#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x5728; <code>interrupt.rs</code> &#x4E2D;&#x662F;&#x5982;&#x4F55;&#x8C03;&#x7528;&#x4ED6;&#x4EEC;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in interrupt.rs</span>
+
+<span class="hljs-keyword">use</span> riscv::register::{stvec, sscratch, sie, sstatus};
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">init</span></span>() {
+    <span class="hljs-keyword">extern</span> {
+        <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">__alltraps</span></span>();
+    }
+    <span class="hljs-keyword">unsafe</span> {
+        sscratch::write(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x7ED9;&#x4E2D;&#x65AD; asm &#x521D;&#x59CB;&#x5316;</span>
+        sstatus::set_sie();
+        stvec::write(__alltraps <span class="hljs-keyword">as</span> usize, stvec::TrapMode::Direct);
+        sie::set_sext(); <span class="hljs-comment">// &#x5F00;&#x5916;&#x90E8;&#x4E2D;&#x65AD;&#xFF08;&#x4E32;&#x53E3;&#xFF09;</span>
+    }
+}
+
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_trap</span></span>(tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) {
+    <span class="hljs-keyword">match</span> tf.scause.cause() {
+        ...
+        Trap::Interrupt(Interrupt::SupervisorExternal) =&gt; {
+            <span class="hljs-keyword">let</span> ch = bbl::sbi::console_getchar() <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>;
+            external(ch <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span>);
+        },
+        _ =&gt; <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;unexpected trap&quot;</span>),
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">external</span></span>(ch: <span class="hljs-keyword">u8</span>) {
+    crate::fs::stdio::STDIN.push(ch <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>);
+}
+
+<span class="hljs-keyword">use</span> crate::process::tick;
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">super_timer</span></span>() {
+    clock_set_next_event();
+    <span class="hljs-keyword">unsafe</span>{
+        TICK = TICK + <span class="hljs-number">1</span>;
+        <span class="hljs-comment">// if TICK % 100 == 0 {</span>
+        <span class="hljs-comment">//     println!(&quot;100 ticks!&quot;);</span>
+        <span class="hljs-comment">// }</span>
+    }
+    tick();
+}
+
+<span class="hljs-comment">// in syscall.rs</span>
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sys_read</span></span>(fd: usize, base: *<span class="hljs-keyword">mut</span> <span class="hljs-keyword">u8</span>, len: usize) -&gt; isize {
+    <span class="hljs-keyword">unsafe</span> { *base = crate::fs::stdio::STDIN.pop() <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span>; }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+</code></pre>
+<h2 id="&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;"><a name="&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;" class="anchor-navigation-ex-anchor" href="#&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B80;&#x5355;&#x7684;&#x4FE1;&#x53F7;&#x91CF;</h2>
+<pre><code class="lang-rust"><span class="hljs-comment">// in sync/mod.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> condvar;
+
+<span class="hljs-comment">// in lib.rs</span>
+
+<span class="hljs-keyword">mod</span> sync;
+
+<span class="hljs-comment">// in sync/condvar.rs</span>
+
+<span class="hljs-keyword">use</span> spin::Mutex;
+<span class="hljs-keyword">use</span> alloc::{ collections::VecDeque, };
+<span class="hljs-keyword">use</span> crate::process::{ Tid, current_tid, yield_now, wake_up };
+
+<span class="hljs-meta">#[derive(Default)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Condvar</span></span> {
+    wait_queue: Mutex&lt;VecDeque&lt;Tid&gt;&gt;,
+}
+
+<span class="hljs-keyword">impl</span> Condvar {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>() -&gt; <span class="hljs-keyword">Self</span> {
+        Condvar::default()
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">wait</span></span>(&amp;<span class="hljs-keyword">self</span>) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> queue = <span class="hljs-keyword">self</span>.wait_queue.lock();
+        queue.push_back(current_tid());
+        <span class="hljs-built_in">drop</span>(queue);
+        yield_now();
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">notify</span></span>(&amp;<span class="hljs-keyword">self</span>) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> queue = <span class="hljs-keyword">self</span>.wait_queue.lock();
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-literal">Some</span>(tid) = queue.pop_front() {
+            wake_up(tid);
+            <span class="hljs-built_in">drop</span>(queue);
+            yield_now();
+        }
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x7684; <code>yield_now</code> &#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x7684;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x7F6E;&#x4E3A; <code>Status::Sleeping</code> &#xFF0C;&#x5728; <code>ThreadPool.retrieve</code> &#x4E2D;&#x4F1A;&#x5BF9;&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x662F; <code>Status::Ready</code> &#x6216;&#x8005; <code>Status::Running</code> &#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x5176;&#x653E;&#x5165;&#x8C03;&#x5EA6;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x7B49;&#x5F85;&#x4E0B;&#x4E00;&#x6B21;&#x8C03;&#x5EA6;&#x3002;&#x5426;&#x5219;&#x8BE5;&#x7EBF;&#x7A0B;&#x5C06;&#x4E0D;&#x518D;&#x88AB;&#x8C03;&#x5EA6;&#xFF08;&#x9664;&#x975E;&#x88AB; Condvar &#x91CD;&#x65B0;&#x52A0;&#x5165;&#xFF09;&#x3002;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in process/mod.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">yield_now</span></span>() {
+    CPU.yield_now();
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">wake_up</span></span>(tid : Tid) {
+    CPU.wake_up(tid);
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">current_tid</span></span>() -&gt; usize {
+    CPU.current_tid()
+}
+
+<span class="hljs-comment">// in process/processor.rs</span>
+
+<span class="hljs-keyword">impl</span> Processor {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">yield_now</span></span>(&amp;<span class="hljs-keyword">self</span>) {
+        <span class="hljs-keyword">let</span> inner = <span class="hljs-keyword">self</span>.inner();
+        <span class="hljs-keyword">if</span> !inner.current.is_none() {
+            <span class="hljs-keyword">unsafe</span> {
+                <span class="hljs-keyword">let</span> flags = disable_and_store(); <span class="hljs-comment">// &#x7981;&#x6B62;&#x4E2D;&#x65AD;&#xFF0C;&#x83B7;&#x53D6;&#x5F53;&#x524D; sstatus &#x7684;&#x72B6;&#x6001;&#x5E76;&#x4FDD;&#x5B58;&#x3002;</span>
+                <span class="hljs-keyword">let</span> tid = inner.current.as_mut().unwrap().<span class="hljs-number">0</span>;
+                <span class="hljs-keyword">let</span> thread_info = inner.pool.threads[tid].as_mut().expect(<span class="hljs-string">&quot;thread not exits&quot;</span>);
+                <span class="hljs-keyword">if</span> thread_info.present {
+                    thread_info.status = Status::Sleeping;
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;try to sleep an null thread !&quot;</span>);
+                }
+                inner
+                    .current
+                    .as_mut()
+                    .unwrap()
+                    .<span class="hljs-number">1</span>
+                    .switch_to(&amp;<span class="hljs-keyword">mut</span> *inner.idle);   <span class="hljs-comment">// &#x8F6C;&#x5230; idle &#x7EBF;&#x7A0B;&#x91CD;&#x65B0;&#x8C03;&#x5EA6;</span>
+                restore(flags);  <span class="hljs-comment">// &#x4F7F;&#x80FD;&#x4E2D;&#x65AD;&#xFF0C;&#x6062;&#x590D; sstatus &#x7684;&#x72B6;&#x6001;</span>
+            }
+        }
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">wake_up</span></span>(&amp;<span class="hljs-keyword">self</span>, tid: Tid) {
+        <span class="hljs-keyword">let</span> inner = <span class="hljs-keyword">self</span>.inner();
+        inner.pool.wakeup(tid);
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">current_tid</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; usize {
+        <span class="hljs-keyword">self</span>.inner().current.as_mut().unwrap().<span class="hljs-number">0</span> <span class="hljs-keyword">as</span> usize
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">run</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; !{
+        ...
+        <span class="hljs-comment">// println!(&quot;thread {} ran just now&quot;, tid);</span>
+        ...
+    }
+}
+
+<span class="hljs-comment">// in process/thread_pool.rs</span>
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ThreadInfo</span></span> {
+   <span class="hljs-keyword">pub</span> status: Status,
+   <span class="hljs-keyword">pub</span> present: <span class="hljs-keyword">bool</span>,
+   thread: <span class="hljs-built_in">Option</span>&lt;<span class="hljs-built_in">Box</span>&lt;Thread&gt;&gt;,
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ThreadPool</span></span> {
+    <span class="hljs-keyword">pub</span> threads: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">Option</span>&lt;ThreadInfo&gt;&gt;, <span class="hljs-comment">// &#x7EBF;&#x7A0B;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5411;&#x91CF;</span>
+    scheduler: <span class="hljs-built_in">Box</span>&lt;Scheduler&gt;, <span class="hljs-comment">// &#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</span>
+}
+
+<span class="hljs-keyword">impl</span> ThreadPool {
+    ...
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">retrieve</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, tid: Tid, thread: <span class="hljs-built_in">Box</span>&lt;Thread&gt; ) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> thread_info = <span class="hljs-keyword">self</span>.threads[tid].as_mut().expect(<span class="hljs-string">&quot;thread not exits !&quot;</span>);
+        <span class="hljs-keyword">if</span> thread_info.present {
+            thread_info.thread = <span class="hljs-literal">Some</span>(thread);
+            <span class="hljs-keyword">match</span> thread_info.status {
+                Status::Ready | Status::Running(_) =&gt; {
+                    <span class="hljs-keyword">self</span>.scheduler.push(tid);
+                },
+                _ =&gt; {
+                    <span class="hljs-comment">// println!(&quot;do nothing!&quot;);</span>
+                },
+            }
+        }
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">wakeup</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, tid: Tid) {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">proc</span> = <span class="hljs-keyword">self</span>.threads[tid].as_mut().expect(<span class="hljs-string">&quot;thread not exist&quot;</span>);
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">proc</span>.present {
+            <span class="hljs-keyword">proc</span>.status = Status::Ready;
+            <span class="hljs-keyword">self</span>.scheduler.push(tid);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;try to sleep an null thread !&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<p>&#x6267;&#x884C; <code>make run</code> &#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x8F93;&#x5165;&#x6587;&#x672C;&#x4E86;&#xFF0C;&#x4E0B;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x662F;&#x52A8;&#x6001;&#x6267;&#x884C;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="命令行——输出.html" class="navigation navigation-prev " aria-label="Previous page: 11.1. 命令行——输出">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="命令行——执行程序.html" class="navigation navigation-next " aria-label="Next page: 11.3. 命令行——执行程序">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11.2. 命令行——输入（信号量）","level":"1.12.2","depth":2,"next":{"title":"11.3. 命令行——执行程序","level":"1.12.3","depth":2,"path":"docs/命令行——执行程序.md","ref":"docs/命令行——执行程序.md","articles":[]},"previous":{"title":"11.1. 命令行——输出","level":"1.12.1","depth":2,"path":"docs/命令行——输出.md","ref":"docs/命令行——输出.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"docs/命令行——输入（信号量）.md","mtime":"2019-10-13T07:50:27.014Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

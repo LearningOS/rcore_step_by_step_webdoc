@@ -1,0 +1,738 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>11.1. 命令行——输出 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="命令行——输入（信号量）.html" />
+    
+    
+    <link rel="prev" href="命令行.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="独立式可执行程序.html">
+            
+                <a href="独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="最小化内核.html">
+            
+                <a href="最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="格式化输出.html">
+            
+                <a href="格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="中断异常.html">
+            
+                <a href="中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Trap.html">
+            
+                <a href="Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="时钟中断.html">
+            
+                <a href="时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="内存分配.html">
+            
+                <a href="内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="页表简介.html">
+            
+                <a href="页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="内核线程.html">
+            
+                <a href="内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="线程调度.html">
+            
+                <a href="线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="创建页表.html">
+            
+                <a href="创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="用户进程.html">
+            
+                <a href="用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="命令行.html">
+            
+                <a href="命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.12.1" data-path="命令行——输出.html">
+            
+                <a href="命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="命令行——输入（信号量）.html">
+            
+                <a href="命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="命令行——执行程序.html">
+            
+                <a href="命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11.1. 命令行——输出</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;"><b></b>&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;</a></li><ul><li><span class="title-icon "></span><a href="#&#x6253;&#x5305;&#x7A0B;&#x5E8F;"><b></b>&#x6253;&#x5305;&#x7A0B;&#x5E8F;</a></li><li><span class="title-icon "></span><a href="#&#x89E3;&#x6790;&#x6587;&#x4EF6;"><b></b>&#x89E3;&#x6790;&#x6587;&#x4EF6;</a></li><li><span class="title-icon "></span><a href="#&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><b></b>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</a></li></ul></ul></div><a href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;"><a name="&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;" class="anchor-navigation-ex-anchor" href="#&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x547D;&#x4EE4;&#x884C;&#x2014;&#x2014;&#x8F93;&#x51FA;</h1>
+<blockquote>
+<p>&#x672C;&#x7AE0;&#x4EE3;&#x7801;&#x5BF9;&#x5E94; commit &#xFF1A;8b2476d3892ea5689420cbb1460210ba29bee6bc</p>
+</blockquote>
+<h2 id="&#x6253;&#x5305;&#x7A0B;&#x5E8F;"><a name="&#x6253;&#x5305;&#x7A0B;&#x5E8F;" class="anchor-navigation-ex-anchor" href="#&#x6253;&#x5305;&#x7A0B;&#x5E8F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6253;&#x5305;&#x7A0B;&#x5E8F;</h2>
+<p>&#x521B;&#x5EFA; <strong>usr/rust/src/bin/shell.rs</strong> &#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#![no_std]</span>
+<span class="hljs-meta">#![no_main]</span>
+
+<span class="hljs-meta">#[macro_use]</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> rust;
+
+<span class="hljs-comment">// IMPORTANT: Must define main() like this</span>
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() -&gt; <span class="hljs-keyword">i32</span> {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Rust user shell&quot;</span>);
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<p>&#x4FEE;&#x6539; Makefile&#xFF0C;&#x5C06;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x548C; shell &#x6253;&#x5305;&#x6210; img &#xFF1A;</p>
+<pre><code class="lang-makefile"><span class="hljs-comment"># in Makefile</span>
+
+usr_path := usr
+
+export SFSIMG = $(usr_path)/rcore32.img
+
+
+<span class="hljs-comment"># in usr/Makefile</span>
+<span class="hljs-meta"><span class="hljs-meta-keyword">.PHONY</span>: all clean rust build</span>
+all: rust build
+build: $(out_img)
+
+$(out_img): rust
+    @rcore-fs-fuse $@ $(out_dir) zip
+
+rcore-fs-fuse:
+ifeq ($(shell which rcore-fs-fuse),)
+    @echo Installing rcore-fs-fuse
+    @cargo install rcore-fs-fuse --git https://github.com/rcore-os/rcore-fs --rev c611248
+endif
+</code></pre>
+<p>&#x6267;&#x884C; <code>make</code> &#x751F;&#x6210;&#x7684; <strong>rcore32.img</strong> &#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="&#x89E3;&#x6790;&#x6587;&#x4EF6;"><a name="&#x89E3;&#x6790;&#x6587;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x89E3;&#x6790;&#x6587;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x89E3;&#x6790;&#x6587;&#x4EF6;</h2>
+<p><code>rcore32.img</code> &#x91CC;&#x9762;&#x76EE;&#x524D;&#x53EA;&#x5305;&#x542B;&#x4E86; shell &#xFF0C;&#x4EE5;&#x540E;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x5176;&#x4E2D;&#x7684; shell &#x89E3;&#x6790;&#x51FA;&#x6765;&#x5E76;&#x4E14;&#x52A0;&#x5165;&#x5230;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in process/mod.rs</span>
+
+<span class="hljs-keyword">use</span> crate::fs::ROOT_INODE;
+<span class="hljs-keyword">use</span> crate::fs::INodeExt;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">kmain</span></span>() {
+    CPU.run();
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">init</span></span>() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;+------ now to initialize process ------+&quot;</span>);
+    <span class="hljs-keyword">let</span> scheduler = Scheduler::new(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">let</span> thread_pool = ThreadPool::new(<span class="hljs-number">100</span>, scheduler);
+    CPU.init(Thread::new_idle(), <span class="hljs-built_in">Box</span>::new(thread_pool));
+    <span class="hljs-keyword">let</span> data = ROOT_INODE
+        .lookup(<span class="hljs-string">&quot;rust/shell&quot;</span>)
+        .unwrap()
+        .read_as_vec()
+        .unwrap();
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;size of program {:#x}&quot;</span>, data.len());
+    <span class="hljs-keyword">let</span> user = <span class="hljs-keyword">unsafe</span>{ Thread::new_user(data.as_slice()) };
+    CPU.add_thread(user);
+}
+
+<span class="hljs-comment">// in init.rs</span>
+
+<span class="hljs-keyword">use</span> crate::process::{ init <span class="hljs-keyword">as</span> process_init, kmain };
+<span class="hljs-keyword">use</span> crate::fs::init <span class="hljs-keyword">as</span> fs_init;
+
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_main</span></span>(hartid: usize, dtb: usize) -&gt; ! {
+    interrupt_init();
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello RISCV ! in hartid {}, dtb @ {:#x} &quot;</span>, hartid, dtb);
+    memory_init(dtb);
+    fs_init();
+    clock_init();
+    process_init();
+    kmain();
+    <span class="hljs-keyword">loop</span> {}
+}
+
+<span class="hljs-comment">// in lib.rs</span>
+
+<span class="hljs-keyword">mod</span> fs;
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x6587;&#x4EF6;&#x7684;&#x89E3;&#x6790;&#x548C;&#x52A0;&#x8F7D;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x770B;&#x4F3C;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4E2D;&#x6700;&#x590D;&#x6742;&#x7684; fs crate &#x6211;&#x4EEC;&#x5C1A;&#x672A;&#x5B9E;&#x73B0;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x586B;&#x8FD9;&#x4E2A;&#x5751;&#x5427;&#x3002;</p>
+<h2 id="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><a name="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;" class="anchor-navigation-ex-anchor" href="#&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h2>
+<p>&#x5B9E;&#x73B0;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x5176;&#x5B9E;&#x5305;&#x542B;&#x4E86;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x521B;&#x5EFA;&#x76EE;&#x5F55; fs &#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-comment">// in fs/mod.rs</span>
+
+<span class="hljs-keyword">use</span> lazy_static::*;
+<span class="hljs-keyword">use</span> rcore_fs::vfs::*;
+<span class="hljs-keyword">use</span> rcore_fs_sfs::SimpleFileSystem;
+<span class="hljs-keyword">use</span> alloc::{ sync::Arc, vec::<span class="hljs-built_in">Vec</span> };
+
+<span class="hljs-keyword">mod</span> device;
+
+lazy_static! {
+    <span class="hljs-comment">/// The root of file system</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">ref</span> ROOT_INODE: Arc&lt;INode&gt; = {
+
+        <span class="hljs-keyword">let</span> device = {
+            <span class="hljs-keyword">extern</span> {
+                <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">_user_img_start</span></span>();
+                <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">_user_img_end</span></span>();
+            }
+            <span class="hljs-comment">// &#x5C06;&#x5B58;&#x50A8;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5B58;&#x8303;&#x56F4;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x865A;&#x62DF;&#x78C1;&#x76D8; Membuf</span>
+            Arc::new(<span class="hljs-keyword">unsafe</span> { device::MemBuf::new(_user_img_start, _user_img_end) })
+        };
+
+        <span class="hljs-keyword">let</span> sfs = SimpleFileSystem::open(device).expect(<span class="hljs-string">&quot;failed to open SFS&quot;</span>);
+        sfs.root_inode()
+    };
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">INodeExt</span></span> {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">read_as_vec</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u8</span>&gt;&gt;;
+}
+
+<span class="hljs-keyword">impl</span> INodeExt <span class="hljs-keyword">for</span> INode {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">read_as_vec</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u8</span>&gt;&gt; {
+        <span class="hljs-keyword">let</span> size = <span class="hljs-keyword">self</span>.metadata()?.size;
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> buf = <span class="hljs-built_in">Vec</span>::with_capacity(size);
+        <span class="hljs-keyword">unsafe</span> {
+            buf.set_len(size);
+        }
+        <span class="hljs-keyword">self</span>.read_at(<span class="hljs-number">0</span>, buf.as_mut_slice())?;
+        <span class="hljs-literal">Ok</span>(buf)
+    }
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">init</span></span>() {
+    <span class="hljs-comment">// &#x6253;&#x5370;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x9879;&#x7684;&#x540D;&#x5B57;</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> id = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-literal">Ok</span>(name) = ROOT_INODE.get_entry(id) {
+        id += <span class="hljs-number">1</span>;
+        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;{}&quot;</span>, name);
+    }
+}
+
+<span class="hljs-comment">// in fs/device.rs</span>
+
+<span class="hljs-keyword">use</span> spin::RwLock;
+<span class="hljs-keyword">use</span> rcore_fs::dev::*;
+
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MemBuf</span></span>(RwLock&lt;&amp;<span class="hljs-symbol">&apos;static</span> <span class="hljs-keyword">mut</span> [<span class="hljs-keyword">u8</span>]&gt;);
+
+<span class="hljs-keyword">impl</span> MemBuf {
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">unsafe</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(begin: <span class="hljs-keyword">unsafe</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span></span>(), end: <span class="hljs-keyword">unsafe</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span></span>()) -&gt; <span class="hljs-keyword">Self</span> {
+        <span class="hljs-keyword">use</span> core::slice;
+        MemBuf(RwLock::new(slice::from_raw_parts_mut(
+            begin <span class="hljs-keyword">as</span> *<span class="hljs-keyword">mut</span> <span class="hljs-keyword">u8</span>,
+            end <span class="hljs-keyword">as</span> usize - begin <span class="hljs-keyword">as</span> usize,
+        )))
+    }
+}
+
+<span class="hljs-keyword">impl</span> Device <span class="hljs-keyword">for</span> MemBuf {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">read_at</span></span>(&amp;<span class="hljs-keyword">self</span>, offset: usize, buf: &amp;<span class="hljs-keyword">mut</span> [<span class="hljs-keyword">u8</span>]) -&gt; <span class="hljs-built_in">Result</span>&lt;usize&gt; {
+        <span class="hljs-keyword">let</span> slice = <span class="hljs-keyword">self</span>.<span class="hljs-number">0</span>.read();
+        <span class="hljs-keyword">let</span> len = buf.len().min(slice.len() - offset);  <span class="hljs-comment">// &#x53D6;&#x78C1;&#x76D8;&#x5269;&#x4F59;&#x957F;&#x5EA6;&#x548C; buf &#x5927;&#x5C0F;&#x7684;&#x8F83;&#x5C0F;&#x503C;</span>
+        buf[..len].copy_from_slice(&amp;slice[offset..offset + len]);
+        <span class="hljs-literal">Ok</span>(len)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">write_at</span></span>(&amp;<span class="hljs-keyword">self</span>, offset: usize, buf: &amp;[<span class="hljs-keyword">u8</span>]) -&gt; <span class="hljs-built_in">Result</span>&lt;usize&gt; {
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> slice = <span class="hljs-keyword">self</span>.<span class="hljs-number">0</span>.write();
+        <span class="hljs-keyword">let</span> len = buf.len().min(slice.len() - offset);
+        slice[offset..offset + len].copy_from_slice(&amp;buf[..len]);
+        <span class="hljs-literal">Ok</span>(len)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sync</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+
+<span class="hljs-comment">// in Cargo.toml</span>
+
+rcore-fs = { path = <span class="hljs-string">&quot;crate/rcore-fs&quot;</span> }
+rcore-fs-sfs = { path = <span class="hljs-string">&quot;crate/rcore-fs-sfs&quot;</span> }
+
+<span class="hljs-comment">// in init.rs</span>
+
+<span class="hljs-keyword">use</span> crate::process::{ init <span class="hljs-keyword">as</span> process_init, kmain };
+<span class="hljs-keyword">use</span> crate::fs::init <span class="hljs-keyword">as</span> fs_init;
+
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_main</span></span>(hartid: usize, dtb: usize) -&gt; ! {
+    interrupt_init();
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello RISCV ! in hartid {}, dtb @ {:#x} &quot;</span>, hartid, dtb);
+    memory_init(dtb);
+    fs_init();
+    clock_init();
+    process_init();
+    kmain();
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x5C06;&#x4E4B;&#x524D;&#x751F;&#x6210;&#x7684; <code>rcore32.img</code> &#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x5757;&#x78C1;&#x76D8;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x8981;&#x7684;&#x7A0B;&#x5E8F;&#xFF08;ELF &#x683C;&#x5F0F;&#xFF09;&#x3002;&#x8FD9;&#x91CC;&#x5C06;&#x5B58;&#x50A8;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5B58;&#x8303;&#x56F4;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x865A;&#x62DF;&#x78C1;&#x76D8;&#xFF08;Membuf&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; <code>look_up</code> &#x51FD;&#x6570;&#x67E5;&#x627E;&#x865A;&#x62DF;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x76EE;&#x6807;&#x5185;&#x5BB9;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x3002;&#x627E;&#x5230;&#x540E;&#x5229;&#x7528;&#x5176;&#x5143;&#x6570;&#x636E;&#xFF08;metadata&#xFF09;&#x786E;&#x5B9A;&#x957F;&#x5EA6;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x8BE5;&#x8303;&#x56F4;&#x5185;&#x7684; ELF &#x7A0B;&#x5E8F;&#x8BFB;&#x53D6;&#xFF0C;&#x6700;&#x540E;&#x52A0;&#x8F7D;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x6267;&#x884C; <code>make run</code> &#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
+<pre><code>...
+tid to alloc: 0
+Rust user shell
+thread 0 ran just now
+thread 0 ran just now
+thread 0 ran just now
+thread 0 ran just now
+thread 0 ran just now
+...
+</code></pre><p>&#x6B64;&#x65F6;&#x547D;&#x4EE4;&#x884C;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8F93;&#x51FA;&#x6587;&#x672C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x8FD8;&#x4E0D;&#x80FD;&#x8F93;&#x5165;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x8FD9;&#x5C06;&#x662F;&#x6211;&#x4EEC;&#x4E0B;&#x4E00;&#x7AE0;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="命令行.html" class="navigation navigation-prev " aria-label="Previous page: 11. 命令行">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="命令行——输入（信号量）.html" class="navigation navigation-next " aria-label="Next page: 11.2. 命令行——输入（信号量）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11.1. 命令行——输出","level":"1.12.1","depth":2,"next":{"title":"11.2. 命令行——输入（信号量）","level":"1.12.2","depth":2,"path":"docs/命令行——输入（信号量）.md","ref":"docs/命令行——输入（信号量）.md","articles":[]},"previous":{"title":"11. 命令行","level":"1.12","depth":1,"path":"docs/命令行.md","ref":"docs/命令行.md","articles":[{"title":"11.1. 命令行——输出","level":"1.12.1","depth":2,"path":"docs/命令行——输出.md","ref":"docs/命令行——输出.md","articles":[]},{"title":"11.2. 命令行——输入（信号量）","level":"1.12.2","depth":2,"path":"docs/命令行——输入（信号量）.md","ref":"docs/命令行——输入（信号量）.md","articles":[]},{"title":"11.3. 命令行——执行程序","level":"1.12.3","depth":2,"path":"docs/命令行——执行程序.md","ref":"docs/命令行——执行程序.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"docs/命令行——输出.md","mtime":"2019-10-13T07:50:27.014Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

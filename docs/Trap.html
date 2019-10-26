@@ -1,0 +1,964 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4.1 Trap · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="时钟中断.html" />
+    
+    
+    <link rel="prev" href="中断异常.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="独立式可执行程序.html">
+            
+                <a href="独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="最小化内核.html">
+            
+                <a href="最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="格式化输出.html">
+            
+                <a href="格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="中断异常.html">
+            
+                <a href="中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="Trap.html">
+            
+                <a href="Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="时钟中断.html">
+            
+                <a href="时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="内存分配.html">
+            
+                <a href="内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="页表简介.html">
+            
+                <a href="页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="内核线程.html">
+            
+                <a href="内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="线程调度.html">
+            
+                <a href="线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="创建页表.html">
+            
+                <a href="创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="用户进程.html">
+            
+                <a href="用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="命令行.html">
+            
+                <a href="命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="命令行——输出.html">
+            
+                <a href="命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="命令行——输入（信号量）.html">
+            
+                <a href="命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="命令行——执行程序.html">
+            
+                <a href="命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >4.1 Trap</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#trap"><b></b>Trap</a></li><ul><li><span class="title-icon "></span><a href="#riscv-&#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;"><b></b>RISCV &#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;</a></li><li><span class="title-icon "></span><a href="#&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;"><b></b>&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;</a></li><li><span class="title-icon "></span><a href="#&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;"><b></b>&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;</a></li><li><span class="title-icon "></span><a href="#&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;"><b></b>&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;</a></li><li><span class="title-icon "></span><a href="#&#x4E2D;&#x65AD;&#x5904;&#x7406;"><b></b>&#x4E2D;&#x65AD;&#x5904;&#x7406;</a></li><li><span class="title-icon "></span><a href="#&#x9884;&#x544A;"><b></b>&#x9884;&#x544A;</a></li></ul></ul></div><a href="#trap" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="trap"><a name="trap" class="anchor-navigation-ex-anchor" href="#trap"><i class="fa fa-link" aria-hidden="true"></i></a>Trap</h1>
+<blockquote>
+<p>&#x672C;&#x7AE0;&#x4EE3;&#x7801;&#x5BF9;&#x5E94;&#x5206;&#x652F;&#xFF1A;trap</p>
+</blockquote>
+<h2 id="riscv-&#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;"><a name="riscv-&#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;" class="anchor-navigation-ex-anchor" href="#riscv-&#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;"><i class="fa fa-link" aria-hidden="true"></i></a>RISCV &#x4E2D;&#x7684;&#x4E2D;&#x65AD;&#x5F02;&#x5E38;</h2>
+<p>&#x5728; RISCV &#x7279;&#x6743;&#x6307;&#x4EE4;&#x96C6;&#x624B;&#x518C;&#x4E2D;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x4E0E;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x76F8;&#x5173;&#x7684; CSR &#x5BC4;&#x5B58;&#x5668;&#xFF1A;</p>
+<ul>
+<li>sscratch: &#x4E00;&#x4E2A;&#x5B57;&#x7684;&#x4E34;&#x65F6;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x6765;&#x8F85;&#x52A9;&#x4E2D;&#x65AD;&#x5904;&#x7406;</li>
+<li>sstatus: &#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#x5BC4;&#x5B58;&#x5668;</li>
+<li>stvec: &#x4E2D;&#x65AD;&#x8DF3;&#x8F6C;&#x5730;&#x5740;</li>
+<li>scause: &#x4E2D;&#x65AD;&#x6216;&#x5F02;&#x5E38;&#x7684;&#x539F;&#x56E0;</li>
+<li>sepc: &#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x65F6;&#x7684;&#x4F4D;&#x7F6E; / PC</li>
+</ul>
+<p>&#x4E0E;&#x4E2D;&#x65AD;&#x76F8;&#x5173;&#x7684;&#x6307;&#x4EE4;&#xFF1A;</p>
+<ul>
+<li>sret: S &#x6001;&#x4E2D;&#x65AD;&#x8FD4;&#x56DE;</li>
+<li>ecall: &#x5411;&#x5E95;&#x5C42;&#x6267;&#x884C;&#x73AF;&#x5883;&#x53D1;&#x51FA;&#x8C03;&#x7528;&#x8BF7;&#x6C42;&#xFF0C;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</li>
+<li>ebreak: &#x89E6;&#x53D1;&#x65AD;&#x70B9;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x5BC4;&#x5B58;&#x5668;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5F15;&#x5165;&#x5934;&#x6587;&#x4EF6; <code>riscv</code> &#xFF1A;</p>
+<ul>
+<li><code>Cargo.toml</code></li>
+</ul>
+<pre><code class="lang-rust">[dependencies]
+riscv = { path = <span class="hljs-string">&quot;crate/riscv&quot;</span>, features = [<span class="hljs-string">&quot;inline-asm&quot;</span>] }
+# riscv = { git = <span class="hljs-string">&quot;https://github.com/rcore-os/riscv&quot;</span>, features = [<span class="hljs-string">&quot;inline-asm&quot;</span>] }
+</code></pre>
+<blockquote>
+<p>&#x8BE5;&#x5934;&#x6587;&#x4EF6;&#x57FA;&#x672C;&#x5B9E;&#x73B0;&#x4E86; riscv &#x5BC4;&#x5B58;&#x5668;&#x7684;&#x6240;&#x6709;&#x529F;&#x80FD;&#xFF0C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x663E;&#x5F0F;&#x4F7F;&#x7528;&#x6C47;&#x7F16;&#x4EE3;&#x7801;
+&#x4F60;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x6211;&#x7684;&#x4ED3;&#x5E93;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x590D;&#x5236;&#x5230;&#x4F60;&#x7684;&#x76EE;&#x5F55;&#x4E0B;
+&#x4E5F;&#x53EF;&#x4EE5;&#x53BB; <a href="https://github.com/rcore-os/riscv" target="_blank">riscv &#x4ED3;&#x5E93;</a> &#x81EA;&#x884C;&#x4E0B;&#x8F7D;&#xFF08;&#x53EF;&#x80FD;&#x7565;&#x6709;&#x4E0D;&#x4E00;&#x6837;&#xFF09;
+&#x540E;&#x7EED;&#x6211;&#x4EEC;&#x4F1A;&#x901A;&#x8FC7;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#x5176;&#x5B83;&#x5934;&#x6587;&#x4EF6;</p>
+</blockquote>
+<h2 id="&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;"><a name="&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;" class="anchor-navigation-ex-anchor" href="#&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8BBE;&#x7F6E;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x70B9;</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x9047;&#x4E0A;&#x4E2D;&#x65AD;&#x6216;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;cpu &#x4F1A;&#x8DF3;&#x8F6C;&#x5230;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x3002;&#x5728; RISCV &#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x7531; <code>stvec</code> &#x63A7;&#x5236;&#x5BC4;&#x5B58;&#x5668;&#x4FDD;&#x5B58;&#xFF1A;</p>
+<p><img src="img/stvec_riscv32.png" alt="stvec_riscv32"></p>
+<blockquote>
+<p><code>ebreak</code> &#x548C; <code>ecall</code> &#x4E25;&#x683C;&#x6765;&#x8BF4;&#x5C5E;&#x4E8E;&#x4E3B;&#x52A8;&#x89E6;&#x53D1;&#x7684;&#x5F02;&#x5E38;&#x3002;&#x5F02;&#x5E38;&#x662F;&#x5728;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x201C;&#x540C;&#x6B65;&#x201D;&#x53D1;&#x751F;&#x7684;&#xFF0C;&#x76F8;&#x5BF9;&#x5730;&#x4E2D;&#x65AD;&#x5219;&#x662F;&#x201C;&#x5F02;&#x6B65;&#x201D;&#x53D1;&#x751F;&#x7684;&#xFF0C;&#x7531;&#x5916;&#x90E8;&#x4FE1;&#x53F7;&#x89E6;&#x53D1;&#xFF08;&#x5982;&#x65F6;&#x949F;&#x3001;&#x5916;&#x8BBE;&#x3001;IPI&#xFF09;&#x3002;</p>
+</blockquote>
+<p>stvec &#x4E2D;&#x5305;&#x542B;&#x4E86; <strong>&#x5411;&#x91CF;&#x57FA;&#x5740;&#xFF08;BASE&#xFF09;</strong> &#x548C; <strong>&#x5411;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;MODE&#xFF09;</strong> &#xFF0C;&#x5176;&#x4E2D; <strong>&#x5411;&#x91CF;&#x57FA;&#x5740;&#xFF08;BASE&#xFF09;</strong> &#x5FC5;&#x987B;&#x6309;&#x7167; 4 &#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x3002;</p>
+<p>RISCV &#x4E2D;&#x6709;&#x4E24;&#x79CD;&#x4E2D;&#x65AD;&#x5165;&#x53E3;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li><strong>&#x76F4;&#x63A5;&#x6A21;&#x5F0F;&#xFF08;Driect&#xFF09;</strong>
+MODE = 0 &#xFF0C;&#x89E6;&#x53D1;&#x4EFB;&#x4F55; <strong>&#x4E2D;&#x65AD;&#x5F02;&#x5E38;</strong> &#x65F6;&#x90FD;&#x628A; PC &#x8BBE;&#x7F6E;&#x4E3A; BASE</li>
+<li><strong>&#x5411;&#x91CF;&#x6A21;&#x5F0F;&#xFF08;Vectored&#xFF09;</strong>
+MODE = 1 &#xFF0C;&#x5BF9;&#x7B2C; i &#x79CD; <strong>&#x4E2D;&#x65AD;</strong> &#xFF0C;&#x8DF3;&#x8F6C;&#x5230; <code>BASE + i * 4</code>&#xFF1B;&#x5BF9;&#x6240;&#x6709; <strong>&#x5F02;&#x5E38;</strong> &#xFF0C;&#x4ECD;&#x8DF3;&#x8F6C;&#x5230; BASE</li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x91C7;&#x7528;&#x7B2C;&#x4E00;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C;&#x5148;&#x8FDB;&#x5165;&#x7EDF;&#x4E00;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x6839;&#x636E;&#x4E2D;&#x65AD;/&#x5F02;&#x5E38;&#x79CD;&#x7C7B;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x5728; <code>main.rs</code> &#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>interrupt.rs</code> &#xFF1A;</p>
+<ul>
+<li><code>lib.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">mod</span> interrupt;
+</code></pre>
+<ul>
+<li><code>interrupt.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> riscv::register::{ scause, sepc, stvec, sscratch };
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">init</span></span>() {
+    <span class="hljs-keyword">unsafe</span> {
+        sscratch::write(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x7ED9;&#x4E2D;&#x65AD; asm &#x521D;&#x59CB;&#x5316;</span>
+        stvec::write(trap_handler <span class="hljs-keyword">as</span> usize, stvec::TrapMode::Direct);
+    }
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;++++setup interrupt !++++&quot;</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">trap_handler</span></span>() -&gt; ! {
+    <span class="hljs-keyword">let</span> cause = scause::read().cause();
+    <span class="hljs-keyword">let</span> epc = sepc::read();
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;trap: cause: {:?}, epc: {:#x}&quot;</span>, cause, epc);
+    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;trap&quot;</span>);
+}
+</code></pre>
+<ul>
+<li><code>init.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_main</span></span>() -&gt; ! {
+    crate::interrupt::init();
+    <span class="hljs-keyword">unsafe</span>{
+        asm!(<span class="hljs-string">&quot;ebreak&quot;</span>::::<span class="hljs-string">&quot;volatile&quot;</span>);
+    }
+    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;End of rust_main&quot;</span>);
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x73B0;&#x5728;&#x8FD8;&#x65E0;&#x6CD5;&#x6062;&#x590D;&#x4E2D;&#x65AD;&#xFF0C;&#x6211;&#x4EEC;&#x7528; panic &#x7ED3;&#x675F;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x7528; <code>-&gt; !</code> &#x6807;&#x8BB0;&#x6B64;&#x51FD;&#x6570;&#x6C38;&#x4E0D;&#x8FD4;&#x56DE;&#x3002;</p>
+<p><code>make run</code> &#x8FD0;&#x884C;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7A0B;&#x5E8F;&#x6210;&#x529F;&#x89E6;&#x53D1;&#x4E86;&#x5F02;&#x5E38;&#x5E76;&#x8FDB;&#x5165;&#x4E86;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-shell">++++setup interrupt !++++
+trap: cause: Exception(Breakpoint), epc: 0x80400028
+panicked at &apos;trap&apos;, src/interrupt.rs:15:5
+</code></pre>
+<h2 id="&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;"><a name="&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;" class="anchor-navigation-ex-anchor" href="#&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x521B;&#x5EFA;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;</h2>
+<p>&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570;&#x65E0;&#x6CD5;&#x8FD4;&#x56DE;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4F1A;&#x8986;&#x76D6;&#x6389;&#x539F;&#x6709;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#x3002;&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x6062;&#x590D;&#x4E2D;&#x65AD;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5F53;&#x524D; <strong>&#x6240;&#x6709;&#x5BC4;&#x5B58;&#x5668;</strong> &#x7684;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x5904;&#x7406;&#x4E2D;&#x65AD;&#xFF0C;&#x6700;&#x540E;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#xFF0C;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x547D;&#x4EE4;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6309;&#x7167;&#x7279;&#x5B9A;&#x7684;&#x683C;&#x5F0F;&#x4FDD;&#x5B58;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E8E;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <strong>&#x4E2D;&#x65AD;&#x5E27;(TrapFrame)</strong> &#x7ED3;&#x6784;&#x4F53;&#x67E5;&#x770B;&#x6216;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#xFF0C;&#x5728;&#x4E00;&#x7247;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#x5B58;&#x653E;&#x4E86;&#x6211;&#x4EEC;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x8FD9;&#x7247;&#x7A7A;&#x95F4;&#x7684;&#x9996;&#x5730;&#x5740;&#xFF08;&#x6307;&#x9488;&#xFF09;&#x6765;&#x8BBF;&#x95EE;&#x4ED6;&#x4EEC;&#x3002;</p>
+<p><strong>riscv32</strong> &#x4E2D;&#x6709; 32 &#x4E2A;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x548C;&#x90E8;&#x5206;&#x7279;&#x6B8A;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x5728; <code>main.rs</code> &#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>context.rs</code> &#x6587;&#x4EF6;&#x3002;&#x6808;&#x5E27;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>lib.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">mod</span> context;
+</code></pre>
+<ul>
+<li><code>context.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> riscv::register::{
+    sstatus::Sstatus,
+    scause::Scause,
+};
+
+<span class="hljs-meta">#[repr(C)]</span>
+<span class="hljs-meta">#[derive(Debug)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TrapFrame</span></span> {
+    <span class="hljs-keyword">pub</span> x: [usize; <span class="hljs-number">32</span>], <span class="hljs-comment">// General registers</span>
+    <span class="hljs-keyword">pub</span> sstatus: Sstatus, <span class="hljs-comment">// Supervisor Status Register</span>
+    <span class="hljs-keyword">pub</span> sepc: usize, <span class="hljs-comment">// Supervisor exception program counter</span>
+    <span class="hljs-keyword">pub</span> stval: usize, <span class="hljs-comment">// Supervisor trap value</span>
+    <span class="hljs-keyword">pub</span> scause: Scause, <span class="hljs-comment">// Scause register: record the cause of exception/interrupt/trap</span>
+}
+</code></pre>
+<p>&#x5176;&#x4E2D; <code>#[repr(C)]</code> &#x8868;&#x793A;&#x5BF9;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6309; C &#x8BED;&#x8A00;&#x6807;&#x51C6; &#x8FDB;&#x884C;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ECE;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x5F00;&#x59CB;&#xFF0C;&#x6309;&#x5B57;&#x6BB5;&#x7684;&#x5B9A;&#x4E49;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x6392;&#x5217;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5199;&#x7684;&#x8BDD;&#xFF0C;Rust &#x5BF9;&#x5B83;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x6B63;&#x786E;&#x7684;&#x8BFB;&#x5199;&#x3002;</p>
+<p><code>#[derive(Debug)]</code> &#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>println!(&quot;{:#?}&quot;, tf)</code> &#x5C06;&#x5176;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;</p>
+<h2 id="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;"><a name="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;" class="anchor-navigation-ex-anchor" href="#&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;</h2>
+<p>&#x5728; <code>main.rs</code> &#x7684;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>trap/trap.asm</code> &#x3002;</p>
+<p>&#x5728; <code>trap/trap.asm</code> &#x4E2D;&#x5B9E;&#x73B0; <code>__alltraps</code> &#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x8DF3;&#x8F6C;&#x5230; <code>interrupt.rs</code> &#x7684;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570; <code>rust_trap</code> &#x3002;&#x5904;&#x7406;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x518D;&#x901A;&#x8FC7; <code>trap/trap.asm</code> &#x4E2D;&#x7684; <code>__trapret</code> &#x5C06;&#x5BC4;&#x5B58;&#x5668;&#x6062;&#x590D;&#x5230;&#x4E2D;&#x65AD;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4E2D;&#x65AD;&#x524D;&#x7684;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x7F16;&#x5199;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x7684;&#x6574;&#x4F53;&#x6846;&#x67B6;&#xFF1A;</p>
+<ul>
+<li><code>trap/trap.asm</code></li>
+</ul>
+<pre><code class="lang-nasm">.section .text
+.globl __alltraps
+__alltraps:
+    SAVE_ALL
+    mv a0, sp
+    jal rust_trap
+.globl __trapret
+__trapret:
+    RESTORE_ALL
+    # return from supervisor call
+    sret
+</code></pre>
+<p><code>.globl</code> &#x8868;&#x793A;&#x8BE5;&#x7B26;&#x53F7;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7B26;&#x53F7;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x5916;&#x90E8;&#x8BBF;&#x95EE;&#x3002; <code>.section .text</code> &#x5C06; <code>__alltraps</code> &#x548C; <code>__trapret</code> &#x653E;&#x5230;&#x7A0B;&#x5E8F;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x6BB5;&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97; <code>__alltrap</code> &#x6267;&#x884C;&#x5B8C;&#x540E;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C; <code>__trapret</code> &#x3002;</p>
+<blockquote>
+<p><code>SAVE_ALL</code> &#x548C; <code>RESTORE_ALL</code> &#x7A0D;&#x540E;&#x5B9E;&#x73B0;</p>
+</blockquote>
+<p>&#x770B;&#x56DE; <code>__alltrap</code> &#xFF0C;&#x5728; <code>jal rust_trap</code> &#x88AB;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86; <code>mv a0, sp</code> &#x3002;&#x5176;&#x4E2D; <code>a0</code> &#x662F; riscv32 &#x4E2D;&#x7684;&#x53C2;&#x6570;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x4E0B;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x5C06; <code>a0</code> &#x8D4B;&#x503C;&#x4E3A; <code>sp</code> &#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6808;&#x5E27;&#x7684;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x6837;&#x4FBF;&#x6210;&#x529F;&#x7684;&#x5C06;&#x6808;&#x5E27;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E86; <code>rust_trap</code> &#x3002;</p>
+<p><code>trap/trap.asm</code> &#x4E2D;&#xFF0C;<code>SAVE_ALL</code> &#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x72B6;&#x6001;&#xFF0C;<code>RESTORE_ALL</code> &#x5219;&#x7528;&#x4E8E;&#x6062;&#x590D;&#x6240;&#x6709;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x589E;&#x52A0;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x5B8F;&#xFF1A;</p>
+<pre><code class="lang-nasm">.equ XLENB, 4                # &#x5B57;&#x957F;&#x4E3A; 4 Byte
+.macro LOAD a1, a2            # &#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x5730;&#x5740; sp+a2*4 &#x7684;&#x503C;&#x5230;&#x5BC4;&#x5B58;&#x5668; a1
+    lw \a1, \a2*XLENB(sp)
+.endm
+.macro STORE a1, a2            # &#x5C06;&#x5BC4;&#x5B58;&#x5668; a1 &#x7684;&#x503C;&#x4FDD;&#x5B58;&#x5230;&#x5185;&#x5B58;&#x5730;&#x5740; sp+a2*4
+    sw \a1, \a2*XLENB(sp)
+.endm
+</code></pre>
+<ul>
+<li><code>SAVE_ALL</code></li>
+</ul>
+<pre><code class="lang-nasm">.macro SAVE_ALL
+    # If coming from userspace, preserve the user stack pointer and load
+    # the kernel stack pointer. If we came from the kernel, sscratch
+    # will contain 0, and we should continue on the current stack.
+    csrrw sp, sscratch, sp
+    bnez sp, trap_from_user
+trap_from_kernel:
+    csrr sp, sscratch
+    # sscratch = previous-sp, sp = kernel-sp
+trap_from_user:
+    # provide room for trap frame
+    addi sp, sp, -36*XLENB
+    # save x registers except x2 (sp)
+    STORE x1, 1
+    STORE x3, 3
+    STORE x4, 4
+    STORE x5, 5
+    STORE x6, 6
+    STORE x7, 7
+    STORE x8, 8
+    STORE x9, 9
+    STORE x10, 10
+    STORE x11, 11
+    STORE x12, 12
+    STORE x13, 13
+    STORE x14, 14
+    STORE x15, 15
+    STORE x16, 16
+    STORE x17, 17
+    STORE x18, 18
+    STORE x19, 19
+    STORE x20, 20
+    STORE x21, 21
+    STORE x22, 22
+    STORE x23, 23
+    STORE x24, 24
+    STORE x25, 25
+    STORE x26, 26
+    STORE x27, 27
+    STORE x28, 28
+    STORE x29, 29
+    STORE x30, 30
+    STORE x31, 31
+
+    # get sp, sstatus, sepc, stval, scause
+    # set sscratch = 0
+    csrrw s0, sscratch, x0
+    csrr s1, sstatus
+    csrr s2, sepc
+    csrr s3, stval
+    csrr s4, scause
+    # store sp, sstatus, sepc, sbadvaddr, scause
+    STORE s0, 2
+    STORE s1, 32
+    STORE s2, 33
+    STORE s3, 34
+    STORE s4, 35
+.endm
+</code></pre>
+<p>&#x4E00;&#x4E0A;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x5C34;&#x5C2C;&#x7684;&#x5C40;&#x9762;&#xFF1A;&#x4E2D;&#x65AD;&#x53EF;&#x80FD;&#x6765;&#x81EA;&#x7528;&#x6237;&#x6001;&#xFF08;U-Mode&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x6765;&#x81EA;&#x5185;&#x6838;&#x6001;&#xFF08;S-Mode&#xFF09;&#x3002;&#x5982;&#x679C;&#x662F;&#x7528;&#x6237;&#x6001;&#x4E2D;&#x65AD;&#xFF0C;&#x90A3;&#x4E48;&#x6B64;&#x65F6;&#x7684;&#x6808;&#x6307;&#x9488; sp &#x6307;&#x5411;&#x7684;&#x662F;&#x7528;&#x6237;&#x6808;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x5185;&#x6838;&#x6001;&#x4E2D;&#x65AD;&#xFF0C;&#x90A3;&#x4E48; sp &#x6307;&#x5411;&#x7684;&#x662F;&#x5185;&#x6838;&#x6808;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x628A;&#x5BC4;&#x5B58;&#x5668;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x6838;&#x6808;&#x4E0A;&#xFF0C; &#x8FD9;&#x5C31;&#x8981;&#x6C42;&#x6709;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x6307;&#x5411;&#x5185;&#x6838;&#x6808;&#x3002;&#x5BF9;&#x4E8E;&#x5185;&#x6838;&#x6001;&#x4E2D;&#x65AD;&#x6765;&#x8BF4;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; sp &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x6001;&#x4E2D;&#x65AD;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x4E0D;&#x7834;&#x574F; 32 &#x4E2A;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5207;&#x6362; sp &#x5230;&#x5185;&#x6838;&#x6808;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x5173;&#x952E;&#x662F;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x53EF;&#x505A;&#x4EA4;&#x6362;&#x64CD;&#x4F5C;&#x7684;&#x4E34;&#x65F6;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x662F; sscratch &#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x89C4;&#x5B9A;&#xFF1A;&#x5F53; CPU &#x5904;&#x4E8E; U-Mode &#x65F6;&#xFF0C;sscratch &#x4FDD;&#x5B58;&#x5185;&#x6838;&#x6808;&#x5730;&#x5740;&#xFF1B;&#x5904;&#x4E8E; S-Mode &#x65F6;&#xFF0C;sscratch &#x4E3A; 0 &#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x8003;&#x5BDF;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x7684;&#x524D;&#x4E09;&#x6761;&#x6307;&#x4EE4;&#xFF0C;&#x5B83;&#x4EEC;&#x5229;&#x7528; sscratch &#x7684;&#x6027;&#x8D28;&#x5DE7;&#x5999;&#x5730;&#x5B8C;&#x6210;&#x4E86;&#x5207;&#x6362;&#x6808;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-nasm">    # &#x4EA4;&#x6362; sp &#x548C; sscratch &#x5BC4;&#x5B58;&#x5668;
+    csrrw sp, sscratch, sp
+    # &#x5224;&#x65AD; sp&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x4EA4;&#x6362;&#x524D;&#x7684; sscratch&#xFF09;&#x662F;&#x5426;&#x4E3A;0
+    # &#x5982;&#x679C;&#x975E;0&#xFF0C;&#x8BF4;&#x660E;&#x662F;&#x7528;&#x6237;&#x6001;&#x4E2D;&#x65AD;&#xFF0C;&#x7531;&#x4E8E; sscratch &#x4FDD;&#x5B58;&#x7684;&#x662F;&#x5185;&#x6838;&#x6808;&#x5730;&#x5740;
+    # &#x6B64;&#x65F6; sp &#x5DF2;&#x7ECF;&#x6307;&#x5411;&#x5185;&#x6838;&#x6808;&#xFF0C;&#x76F4;&#x63A5;&#x8DF3;&#x8F6C;&#x5230; trap_from_user &#x4FDD;&#x5B58;&#x5BC4;&#x5B58;&#x5668;
+    bnez sp, trap_from_user
+    # &#x5426;&#x5219;&#x8BF4;&#x660E;&#x662F;&#x5185;&#x6838;&#x6001;&#x4E2D;&#x65AD;
+trap_from_kernel:
+    # &#x53EA;&#x9700;&#x4ECE; sscratch &#x4E2D;&#x8BFB;&#x51FA;&#x539F;&#x6765;&#x7684; sp &#x5373;&#x53EF;
+    csrr sp, sscratch
+    # &#x6B64;&#x65F6; sscratch = &#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x524D;&#x7684; sp
+    #     sp = &#x5185;&#x6838;&#x6808;
+trap_from_user:
+</code></pre>
+<p>&#x540E;&#x9762;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x4E86;&#xFF1A;&#x6B64;&#x65F6; sp &#x6307;&#x5411;&#x7684;&#x662F;&#x5185;&#x6838;&#x6808;&#x7684;&#x6808;&#x5E95;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x8981;&#x628A; TrapFrame &#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E0A;&#xFF0C;&#x56E0;&#x6B64;&#x5148;&#x5C06;&#x5B83;&#x4E0B;&#x79FB;&#x76F8;&#x5F53;&#x4E8E; TrapFrame &#x5927;&#x5C0F;&#x7684;&#x8DDD;&#x79BB;&#xFF08;<code>36 * 4 Byte</code>&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x4F9D;&#x6B21;&#x4FDD;&#x5B58;&#x9664; x0(zero) &#x548C; x2(sp) &#x5916;&#x7684; 30 &#x4E2A;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-nasm">trap_from_user:
+    # &#x4E3A; TrapFrame &#x9884;&#x7559;&#x7A7A;&#x95F4;
+    addi sp, sp, -36*XLENB
+    # &#x4FDD;&#x5B58;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#xFF08;sp &#x9664;&#x5916;&#xFF09;
+    STORE x1, 1
+    STORE x3, 3
+    STORE x4, 4
+    ...
+    STORE x31, 31
+</code></pre>
+<p>x0 &#x6C38;&#x8FDC;&#x662F; 0&#xFF0C;&#x4E0D;&#x7528;&#x4FDD;&#x5B58;&#xFF1B;sp &#x672C;&#x5E94;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x524D;&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x76EE;&#x524D;&#x88AB;&#x4EA4;&#x6362;&#x5230;&#x4E86; sscratch &#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x7559;&#x5230;&#x540E;&#x9762;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4FDD;&#x5B58; CSR &#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x6B64;&#x65F6;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x4F7F;&#x7528;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-nasm"># &#x8BFB;&#x53D6; sp, sstatus, sepc, stval, scause
+# &#x6309;&#x7167;&#x89C4;&#x5B9A;&#xFF0C;&#x8FDB;&#x5165;&#x5185;&#x6838;&#x6001;&#x540E; sscratch &#x5E94;&#x4E3A; 0
+csrrw s0, sscratch, x0
+csrr s1, sstatus
+csrr s2, sepc
+csrr s3, stval
+csrr s4, scause
+# &#x4FDD;&#x5B58; sp, sstatus, sepc, stval, scause
+STORE s0, 2
+STORE s1, 32
+STORE s2, 33
+STORE s3, 34
+STORE s4, 35
+</code></pre>
+<p><code>SAVE_ALL</code> &#x5C31;&#x8FD9;&#x6837;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x4E24;&#x6761;&#x6307;&#x4EE4;&#x8BA9;&#x6211;&#x4EEC;&#x8DF3;&#x8F6C;&#x5230; Rust &#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-nasm">mv a0, sp
+jal rust_trap
+</code></pre>
+<ul>
+<li><code>interrupt.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> riscv::register::{ stvec, sscratch };
+<span class="hljs-keyword">use</span> crate::context::TrapFrame;
+
+global_asm!(<span class="hljs-built_in">include_str!</span>(<span class="hljs-string">&quot;trap/trap.asm&quot;</span>));
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">init</span></span>() {
+    <span class="hljs-keyword">extern</span> {
+        <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">__alltraps</span></span>();
+    }
+    <span class="hljs-keyword">unsafe</span> {
+        sscratch::write(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x7ED9;&#x4E2D;&#x65AD; asm &#x521D;&#x59CB;&#x5316;</span>
+        stvec::write(__alltraps <span class="hljs-keyword">as</span> usize, stvec::TrapMode::Direct);
+    }
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;++++setup interrupt !++++&quot;</span>);
+}
+
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_trap</span></span>(tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;trap: {:#x?}&quot;</span>, tf);
+    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;trap&quot;</span>);
+}
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x5F97;&#x5230;&#x4EE5;&#x4E0B;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-shell">++++setup interrupt !++++
+trap: TrapFrame {
+    x: [
+        0x80407058,
+        0x80400024,
+        0x8040cff0,
+        0x0,
+        0x8001af00,
+        0x8001ae50,
+        0x0,
+        0x0,
+        0x8040d000,
+        0x8001af00,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+        0x4,
+        0x0,
+        0x82,
+        0x1,
+        0x80008500,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+        0x8,
+        0x2000,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+        0x1,
+        0x0,
+    ],
+    sstatus: Sstatus {
+        bits: 0x80006100,
+    },
+    sepc: 0x80400028,
+    stval: 0x0,
+    scause: Scause {
+        bits: 0x3,
+    },
+}
+panicked at &apos;trap&apos;, src/interrupt.rs:20:5
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x6210;&#x529F;&#x4FDD;&#x5B58;&#x4E86;&#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x65F6;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#xFF01;</p>
+<ul>
+<li><code>RESTORE_ALL</code></li>
+</ul>
+<p>&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668; RESTORE_ALL &#x7684;&#x8FC7;&#x7A0B;&#x6B63;&#x597D;&#x76F8;&#x53CD;&#x3002;&#x9996;&#x5148;&#x6839;&#x636E; sstatus &#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684; SPP &#x4F4D;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x56DE;&#x5230;&#x7528;&#x6237;&#x6001;&#x8FD8;&#x662F;&#x5185;&#x6838;&#x6001;&#x3002;&#x5982;&#x679C;&#x662F;&#x56DE;&#x5230;&#x7528;&#x6237;&#x6001;&#xFF0C;&#x6839;&#x636E;&#x89C4;&#x5B9A;&#x9700;&#x8981;&#x8BBE;&#x7F6E; sscratch &#x4E3A;&#x5185;&#x6838;&#x6808;&#xFF1A;</p>
+<pre><code class="lang-nasm">.macro RESTORE_ALL
+    LOAD s1, 32             # s1 = sstatus
+    LOAD s2, 33             # s2 = sepc
+    andi s0, s1, 1 &lt;&lt; 8     # sstatus.SPP = 1?
+    bnez s0, _to_kernel     # s0 = back to kernel?
+_to_user:
+    addi s0, sp, 36*XLENB
+    csrw sscratch, s0         # sscratch = kernel-sp
+_to_kernel:
+    # restore sstatus, sepc
+    csrw sstatus, s1
+    csrw sepc, s2
+
+    # restore x registers except x2 (sp)
+    LOAD x1, 1
+    LOAD x3, 3
+    LOAD x4, 4
+    LOAD x5, 5
+    LOAD x6, 6
+    LOAD x7, 7
+    LOAD x8, 8
+    LOAD x9, 9
+    LOAD x10, 10
+    LOAD x11, 11
+    LOAD x12, 12
+    LOAD x13, 13
+    LOAD x14, 14
+    LOAD x15, 15
+    LOAD x16, 16
+    LOAD x17, 17
+    LOAD x18, 18
+    LOAD x19, 19
+    LOAD x20, 20
+    LOAD x21, 21
+    LOAD x22, 22
+    LOAD x23, 23
+    LOAD x24, 24
+    LOAD x25, 25
+    LOAD x26, 26
+    LOAD x27, 27
+    LOAD x28, 28
+    LOAD x29, 29
+    LOAD x30, 30
+    LOAD x31, 31
+    # restore sp last
+    LOAD x2, 2
+.endm
+</code></pre>
+<p>&#x6700;&#x540E; <code>__trapret</code> &#x901A;&#x8FC7; sret &#x6307;&#x4EE4;&#x5B8C;&#x6210;&#x4E2D;&#x65AD;&#x8FD4;&#x56DE;&#xFF1A;CPU &#x6839;&#x636E; sstatus.SPP &#x786E;&#x5B9A;&#x7279;&#x6743;&#x7EA7;&#xFF0C;&#x5C06; sepc &#x6062;&#x590D;&#x5230; PC &#x3002;</p>
+<p>&#x5BF9; <code>rust_trap</code> &#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x4FEE;&#x6539;&#xFF1A;</p>
+<ul>
+<li><code>interrupt.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_trap</span></span>(tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;trap!&quot;</span>);
+}
+</code></pre>
+<p>&#x518D;&#x8FD0;&#x884C;&#x4E00;&#x4E0B;&#xFF0C;&#x53D1;&#x73B0;&#x7A0B;&#x5E8F;&#x4E0D;&#x65AD;&#x5730;&#x8F93;&#x51FA; trap! &#xFF0C;&#x8BF4;&#x660E;&#x4E2D;&#x65AD;&#x6062;&#x590D;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x3002;</p>
+<blockquote>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x53CD;&#x590D;&#x8F93;&#x51FA; <code>trap!</code></p>
+</blockquote>
+<h2 id="&#x4E2D;&#x65AD;&#x5904;&#x7406;"><a name="&#x4E2D;&#x65AD;&#x5904;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x4E2D;&#x65AD;&#x5904;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E2D;&#x65AD;&#x5904;&#x7406;</h2>
+<p>&#x81F3;&#x6B64;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4E3A;&#x771F;&#x6B63;&#x7684;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570; <code>rust_trap</code> &#x5EFA;&#x7ACB;&#x597D;&#x4E86;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x514D;&#x9664;&#x4E86;&#x6062;&#x590D;&#x4E2D;&#x65AD;&#x73B0;&#x573A;&#x7684;&#x540E;&#x987E;&#x4E4B;&#x5FE7;&#x3002;&#x540E;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x9646;&#x7EED;&#x6DFB;&#x52A0;&#x5BF9;&#x4E0D;&#x540C;&#x4E2D;&#x65AD;&#x548C;&#x5F02;&#x5E38;&#x79CD;&#x7C7B;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x773C;&#x4E0B;&#x6211;&#x4EEC;&#x8981;&#x5904;&#x7406;&#x7684;&#x662F;&#x65AD;&#x70B9;&#x5F02;&#x5E38; Breakpoint &#x3002;</p>
+<p>&#x5728; riscv &#x4E2D;&#xFF0C;&#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x6307;&#x4EE4;&#x7684; <code>pc</code> &#x88AB;&#x5B58;&#x5165; <code>sepc</code> &#x3002;&#x5BF9;&#x4E8E;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#xFF0C;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x540E;&#x8FD8;&#x56DE;&#x5230;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;&#x4F46;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x4E3B;&#x52A8;&#x89E6;&#x53D1;&#x7684;&#x5F02;&#x5E38;&#xFF08;&#x4F8B;&#x5982;<code>ebreak</code>&#x7528;&#x4E8E;&#x89E6;&#x53D1;&#x65AD;&#x70B9;&#xFF0C;<code>ecall</code>&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF09;&#xFF0C;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570;&#x9700;&#x8981;&#x8C03;&#x6574; <code>sepc</code> &#x4EE5;&#x8DF3;&#x8FC7;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x3002;</p>
+<p><strong>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x624B;&#x52A8;&#x8C03;&#x6574; <code>sepc</code> &#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x53CD;&#x590D;&#x8F93;&#x51FA; <code>trap!</code> &#x3002;</strong></p>
+<p>&#x5728; riscv &#x4E2D;&#xFF0C; <strong>&#x4E00;&#x822C;</strong> &#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x90FD;&#x662F;&#x5B9A;&#x957F;&#x7684; 4 &#x5B57;&#x8282;&#xFF08;&#x4F46;&#x5982;&#x679C;&#x5F00;&#x542F; <strong>&#x538B;&#x7F29;&#x6307;&#x4EE4;&#x96C6;</strong> &#x53EF;&#x5C31;&#x4E0D;&#x4E00;&#x5B9A;&#x4E86;&#xFF0C;&#x8FD9;&#x4E5F;&#x5BFC;&#x81F4;&#x4E86;&#x4E00;&#x4E2A;&#x5927;&#x5751;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x9700;&#x5C06; <code>sepc + 4</code> &#x5373;&#x53EF;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <code>increase_sepc</code> &#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li><code>context.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-keyword">impl</span> TrapFrame {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">increase_sepc</span></span>(<span class="hljs-keyword">self</span>: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">Self</span>) {
+        <span class="hljs-keyword">self</span>.sepc = <span class="hljs-keyword">self</span>.sepc + <span class="hljs-number">4</span>;
+    }
+}
+</code></pre>
+<ul>
+<li><code>interrupt.rs</code></li>
+</ul>
+<pre><code class="lang-rust"><span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rust_trap</span></span>(tf: &amp;<span class="hljs-keyword">mut</span> TrapFrame) {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;trap!&quot;</span>);
+    tf.increase_sepc();
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;&#xFF01;&#xFF01;&#xFF01;</strong></p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5F3A;&#x8C03;&#x4E86; <strong>&#x4E00;&#x822C;</strong> &#x3002;&#x5728;&#x5F00;&#x542F; <strong>&#x538B;&#x7F29;&#x6307;&#x4EE4;&#x96C6;</strong> &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BF9;&#x4E8E;&#x5E38;&#x7528;&#x6307;&#x4EE4;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x8FDB;&#x884C;&#x538B;&#x7F29;&#xFF0C;&#x51CF;&#x5C0F;&#x7A0B;&#x5E8F;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x5019;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7684;&#x3002;&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x6C42;&#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x90FD;&#x662F;&#x7CBE;&#x51C6;&#x7684; <strong>32bits</strong> &#xFF0C;&#x624D;&#x80FD;&#x591F;&#x901A;&#x8FC7; <code>self.sepc = self.sepc + 4</code> &#x8DF3;&#x8F6C;&#x81F3;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF08;&#x5426;&#x5219;&#x4F1A;&#x8DF3;&#x8F6C;&#x5230;&#x5947;&#x602A;&#x7684;&#x5730;&#x65B9;&#xFF09;&#x3002;&#x5728; <strong>riscv32-os.json</strong> &#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x884C; <code>&quot;features&quot;: &quot;+m,+a,+c&quot;</code> &#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;riscv &#x6307;&#x4EE4;&#x96C6;&#x53EA;&#x652F;&#x6301;&#x52A0;&#x51CF;&#x6CD5;&#xFF0C; <strong>+m</strong> &#x589E;&#x52A0;&#x4E86;&#x4E58;&#x9664;&#x6307;&#x4EE4;&#xFF1B; <strong>+a</strong> &#x589E;&#x52A0;&#x4E86;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF1B; <strong>+c</strong> &#x589E;&#x52A0;&#x4E86;&#x4EE3;&#x7801;&#x538B;&#x7F29;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x538B;&#x7F29;&#x662F;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x8981;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x628A; <strong>+c</strong> &#x5220;&#x53BB;&#x3002;</p>
+<p>&#x81F3;&#x6B64;&#x6211;&#x4EEC;&#x7B80;&#x6613;&#x7684;&#x7684;&#x4E2D;&#x65AD;&#x529F;&#x80FD;&#x5DF2;&#x7ECF;&#x5168;&#x90E8;&#x5B9E;&#x73B0;&#x5B8C;&#x6210;&#xFF0C;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#xFF1A;</p>
+<pre><code>++++setup interrupt !++++
+trap!
+panicked at &apos;End of rust_main&apos;, src/init.rs:9:5
+</code></pre><blockquote>
+<p>&#x5982;&#x679C;&#x672A;&#x80FD;&#x6B63;&#x5E38; panic &#x53EF;&#x80FD;&#x9700;&#x8981;&#x5148;&#x6267;&#x884C; cargo clean</p>
+</blockquote>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x8FDB;&#x5165;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x5230;&#x4E86; <strong>rust_main</strong> &#xFF0C;&#x89E6;&#x53D1;&#x4E86; panic &#x3002;</p>
+<h2 id="&#x9884;&#x544A;"><a name="&#x9884;&#x544A;" class="anchor-navigation-ex-anchor" href="#&#x9884;&#x544A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9884;&#x544A;</h2>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x7B80;&#x6613;&#x7684;&#x4E2D;&#x65AD;&#x673A;&#x5236;&#x3002;&#x4E0B;&#x4E00;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728; <strong>rust_trap</strong> &#x4E2D;&#x533A;&#x5206;&#x4E2D;&#x65AD;&#x7C7B;&#x578B;&#xFF0C;&#x5BF9;&#x4ED6;&#x4EEC;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x5B9E;&#x73B0;&#x65F6;&#x949F;&#x4E2D;&#x65AD;&#x3002;</p>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="中断异常.html" class="navigation navigation-prev " aria-label="Previous page: 4. 中断异常">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="时钟中断.html" class="navigation navigation-next " aria-label="Next page: 4.2. 时钟中断">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4.1 Trap","level":"1.5.1","depth":2,"next":{"title":"4.2. 时钟中断","level":"1.5.2","depth":2,"path":"docs/时钟中断.md","ref":"docs/时钟中断.md","articles":[]},"previous":{"title":"4. 中断异常","level":"1.5","depth":1,"path":"docs/中断异常.md","ref":"docs/中断异常.md","articles":[{"title":"4.1 Trap","level":"1.5.1","depth":2,"path":"docs/Trap.md","ref":"docs/Trap.md","articles":[]},{"title":"4.2. 时钟中断","level":"1.5.2","depth":2,"path":"docs/时钟中断.md","ref":"docs/时钟中断.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"docs/Trap.md","mtime":"2019-10-13T07:50:27.002Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,683 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1. 独立式可执行程序 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ancre-navigation/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="最小化内核.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 从零开始写 OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="独立式可执行程序.html">
+            
+                <a href="独立式可执行程序.html">
+            
+                    
+                    1. 独立式可执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="最小化内核.html">
+            
+                <a href="最小化内核.html">
+            
+                    
+                    2. 最小化内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="格式化输出.html">
+            
+                <a href="格式化输出.html">
+            
+                    
+                    3. 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="中断异常.html">
+            
+                <a href="中断异常.html">
+            
+                    
+                    4. 中断异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Trap.html">
+            
+                <a href="Trap.html">
+            
+                    
+                    4.1 Trap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="时钟中断.html">
+            
+                <a href="时钟中断.html">
+            
+                    
+                    4.2. 时钟中断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="内存分配.html">
+            
+                <a href="内存分配.html">
+            
+                    
+                    5. 内存分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="页表简介.html">
+            
+                <a href="页表简介.html">
+            
+                    
+                    6. 页表简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="内核线程.html">
+            
+                <a href="内核线程.html">
+            
+                    
+                    7. 内核线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="线程调度.html">
+            
+                <a href="线程调度.html">
+            
+                    
+                    8. 线程调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="创建页表.html">
+            
+                <a href="创建页表.html">
+            
+                    
+                    9. 创建页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="用户进程.html">
+            
+                <a href="用户进程.html">
+            
+                    
+                    10. 用户进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="命令行.html">
+            
+                <a href="命令行.html">
+            
+                    
+                    11. 命令行
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="命令行——输出.html">
+            
+                <a href="命令行——输出.html">
+            
+                    
+                    11.1. 命令行——输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="命令行——输入（信号量）.html">
+            
+                <a href="命令行——输入（信号量）.html">
+            
+                    
+                    11.2. 命令行——输入（信号量）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="命令行——执行程序.html">
+            
+                <a href="命令行——执行程序.html">
+            
+                    
+                    11.3. 命令行——执行程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >1. 独立式可执行程序</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;"><b></b>&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;</a></li><ul><li><span class="title-icon "></span><a href="#&#x6982;&#x8981;"><b></b>&#x6982;&#x8981;</a></li><li><span class="title-icon "></span><a href="#&#x5B89;&#x88C5;-nightly-rust"><b></b>&#x5B89;&#x88C5; nightly rust</a></li><li><span class="title-icon "></span><a href="#&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C;-rust-binary-&#x9879;&#x76EE;"><b></b>&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C; rust binary &#x9879;&#x76EE;</a></li><li><span class="title-icon "></span><a href="#&#x6DFB;&#x52A0;-nostd-&#x5C5E;&#x6027;"><b></b>&#x6DFB;&#x52A0; no_std &#x5C5E;&#x6027;</a></li><ul><li><span class="title-icon "></span><a href="#fix-error-cannot-find-macro-println-in-this-scope"><b></b>FIX error: cannot find macro &apos;println!&apos; in this scope</a></li><li><span class="title-icon "></span><a href="#fix-error-panichandler-function-required-but-not-found"><b></b>FIX error: &apos;#[panic_handler]&apos; function required, but not found</a></li><li><span class="title-icon "></span><a href="#fix-error-language-item-required-but-not-found-ehpersonality"><b></b>FIX error: language item required, but not found: &apos;eh_personality&apos;</a></li><li><span class="title-icon "></span><a href="#fix-error-requires-start-langitem"><b></b>FIX error: requires &apos;start&apos; lang_item</a></li><li><span class="title-icon "></span><a href="#fix-error-linking-with-cc-failed-exit-code-1"><b></b>FIX error: linking with &apos;cc&apos; failed: exit code: 1</a></li></ul><li><span class="title-icon "></span><a href="#&#x9884;&#x544A;"><b></b>&#x9884;&#x544A;</a></li></ul></ul></div><a href="#&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;"><a name="&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;" class="anchor-navigation-ex-anchor" href="#&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;</h1>
+<blockquote>
+<p>&#x672C;&#x7AE0;&#x4EE3;&#x7801;&#x5BF9;&#x5E94;&#x5206;&#x652F;&#xFF1A;freestanding-rust-binary</p>
+</blockquote>
+<h2 id="&#x6982;&#x8981;"><a name="&#x6982;&#x8981;" class="anchor-navigation-ex-anchor" href="#&#x6982;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6982;&#x8981;</h2>
+<p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x4EE5;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x53C8;&#x79F0; <strong>&#x72EC;&#x7ACB;&#x5F0F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF08;freestanding executable&#xFF09;</strong> &#x6216; <strong>&#x88F8;&#x673A;&#x7A0B;&#x5E8F;&#xFF08;bare-metal executable&#xFF09;</strong> &#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x6240;&#x6709;&#x4F9D;&#x8D56;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5E93;&#x6211;&#x4EEC;&#x90FD;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x3002;&#x6BD4;&#x5982; <strong>std</strong> &#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF08;io, thread, file system, etc.&#xFF09;&#x90FD;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684; <strong>rust &#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;</strong> &#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x8FED;&#x4EE3;&#x5668;&#x3001;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;&#x3001;&#x6240;&#x6709;&#x6743;&#x7CFB;&#x7EDF;&#x7B49;&#x3002;&#x8FD9;&#x4F7F;&#x5F97; rust &#x4F9D;&#x65E7;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#xFF0C;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<ol>
+<li>&#x5B89;&#x88C5; <strong>rust&#xFF08;nightly &#x7248;&#x672C;&#xFF09;</strong> &#x3002;</li>
+<li>&#x521B;&#x5EFA;&#x53EF;&#x6267;&#x884C;&#x7684; rust &#x9879;&#x76EE;&#x3002;</li>
+<li>&#x5C06;&#x521B;&#x5EFA;&#x7684; rust &#x9879;&#x76EE;&#x4FEE;&#x6539;&#x4E3A; <strong>freestanding rust binary</strong> &#xFF0C;&#x8FD9;&#x5305;&#x62EC; <strong>&#x7981;&#x7528; std &#x5E93;</strong> &#x5E76;&#x89E3;&#x51B3;&#x7531;&#x6B64;&#x4EA7;&#x751F;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x95EE;&#x9898;&#x3002;</li>
+</ol>
+<h2 id="&#x5B89;&#x88C5;-nightly-rust"><a name="&#x5B89;&#x88C5;-nightly-rust" class="anchor-navigation-ex-anchor" href="#&#x5B89;&#x88C5;-nightly-rust"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5B89;&#x88C5; nightly rust</h2>
+<p>rust &#x5305;&#x542B;&#xFF1A;stable&#x3001;beta&#x3001;nightly &#x4E09;&#x4E2A;&#x7248;&#x672C;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x5B89;&#x88C5;&#x7684;&#x662F; stable &#x3002;&#x7531;&#x4E8E;&#x5728;&#x7F16;&#x5199;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x65F6;&#x9700;&#x8981;&#x4F7F;&#x7528; rust &#x7684;&#x4E00;&#x4E9B;&#x4E0D;&#x7A33;&#x5B9A;&#x7684;&#x5B9E;&#x9A8C;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x6839;&#x636E; rust &#x5B98;&#x65B9;&#x6559;&#x7A0B;&#x5B89;&#x88C5; <a href="https://doc.rust-lang.org/1.13.0/book/nightly-rust.html" target="_blank">rust nightly</a> &#x3002;</p>
+<p>&#x5B89;&#x88C5;&#x6210;&#x529F;&#x540E;&#x4F7F;&#x7528; <code>rustc --version</code> &#x6216; <code>rustup show</code> &#x67E5;&#x770B;&#x5F53;&#x524D; rust &#x7684;&#x7248;&#x672C;&#x3002;</p>
+<pre><code>$ rustc --version
+rustc 1.38.0-nightly (8a58268b5 2019-07-31)
+</code></pre><blockquote>
+<p>&#x5982;&#x679C;&#x672A;&#x80FD;&#x6210;&#x529F;&#x5207;&#x6362; rust &#x7248;&#x672C;&#xFF0C;&#x8BF7;&#x67E5;&#x770B; <a href="https://github.com/LearningOS/rcore_step_by_step_old/wiki/how-to-switch-rust-toolchain" target="_blank">how to switch rust toolchain</a></p>
+</blockquote>
+<h2 id="&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C;-rust-binary-&#x9879;&#x76EE;"><a name="&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C;-rust-binary-&#x9879;&#x76EE;" class="anchor-navigation-ex-anchor" href="#&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C;-rust-binary-&#x9879;&#x76EE;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x521B;&#x5EFA;&#x5E76;&#x6267;&#x884C; rust binary &#x9879;&#x76EE;</h2>
+<p>&#x4F7F;&#x7528; <code>cargo new</code> &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; rust binary &#x9879;&#x76EE;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&gt; cargo new os --bin --edition 2018
+&gt; cd os
+&gt; cargo run
+Compiling os v0.1.0 (/media/chyyuu/chydata/thecode/rust-related/new_rcore_step_by_step/os)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.97s
+     Running `target/debug/os`
+Hello, world!
+</code></pre><table>
+<thead>
+<tr>
+<th><code>cargo new</code> &#x7684;&#x53C2;&#x6570;</th>
+<th>&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>os</code></td>
+<td>&#x9879;&#x76EE;&#x7684;&#x540D;&#x79F0;</td>
+</tr>
+<tr>
+<td><code>--bin</code></td>
+<td>&#x53EF;&#x6267;&#x884C;&#x9879;&#x76EE;&#xFF0C;&#x548C;&#x5176;&#x76F8;&#x5BF9;&#x7684;&#x662F;&#x5E93;&#x9879;&#x76EE; <code>--lib</code></td>
+</tr>
+<tr>
+<td><code>--edition 2018</code></td>
+<td>&#x4F7F;&#x7528;&#x65B0;&#x7248; Rust 2018 &#x800C;&#x4E0D;&#x662F;&#x8001;&#x65E7;&#x7684; Rust 2015</td>
+</tr>
+</tbody>
+</table>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x5DF2;&#x7ECF;&#x80FD;&#x8FD0;&#x884C;&#x4E86;&#xFF01;&#x4F46;&#x8FD9;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684; OS&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x79BB;&#x4E0D;&#x4E86; OS &#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x800C;&#x5DF2;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x5728;&#x786C;&#x4EF6;&#x4E0A;&#x7684; OS&#x3002;&#x4E0B;&#x9762;&#x5C06;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x63A2;&#x7D22;&#x3002;</p>
+<h2 id="&#x6DFB;&#x52A0;-nostd-&#x5C5E;&#x6027;"><a name="&#x6DFB;&#x52A0;-nostd-&#x5C5E;&#x6027;" class="anchor-navigation-ex-anchor" href="#&#x6DFB;&#x52A0;-nostd-&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0; no_std &#x5C5E;&#x6027;</h2>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4F9D;&#x8D56;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5E93;&#x3002;
+&#x9879;&#x76EE;&#x9ED8;&#x8BA4;&#x662F;&#x94FE;&#x63A5;&#x6807;&#x51C6;&#x5E93;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x5C06;&#x5176;&#x7981;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#![no_std]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x6B64;&#x65F6;&#x6267;&#x884C; <code>cargo build</code> &#x6784;&#x5EFA;&#x9879;&#x76EE;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x9519;&#x8BEF;&#xFF1A;</p>
+<pre><code class="lang-rust">error: cannot find macro `<span class="hljs-built_in">println!</span>` <span class="hljs-keyword">in</span> this scope
+ --&gt; src/main.rs:<span class="hljs-number">6</span>:<span class="hljs-number">5</span>
+  |
+<span class="hljs-number">6</span> |     <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello, world!&quot;</span>);
+  |     ^^^^^^^
+
+error: `<span class="hljs-meta">#[panic_handler]</span>` function required, but not found
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x4F9D;&#x6B21;&#x89E3;&#x51B3;&#x8FD9;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="fix-error-cannot-find-macro-println-in-this-scope"><a name="fix-error-cannot-find-macro-println-in-this-scope" class="anchor-navigation-ex-anchor" href="#fix-error-cannot-find-macro-println-in-this-scope"><i class="fa fa-link" aria-hidden="true"></i></a>FIX error: cannot find macro &apos;println!&apos; in this scope</h3>
+<p>println &#x5B8F;&#x5C5E;&#x4E8E;&#x6807;&#x51C6;&#x5E93;&#xFF0C;&#x6240;&#x4EE5;&#x7981;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x540E;&#x81EA;&#x7136;&#x4E0D;&#x80FD;&#x518D;&#x4F7F;&#x7528; println &#x3002;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x76EE;&#x6807;&#x53EA;&#x662F;&#x5199;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5C06;&#x5176;&#x5220;&#x9664;&#x5373;&#x53EF;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#![no_std]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {}
+</code></pre>
+<h3 id="fix-error-panichandler-function-required-but-not-found"><a name="fix-error-panichandler-function-required-but-not-found" class="anchor-navigation-ex-anchor" href="#fix-error-panichandler-function-required-but-not-found"><i class="fa fa-link" aria-hidden="true"></i></a>FIX error: &apos;#[panic_handler]&apos; function required, but not found</h3>
+<p>&#x5728;&#x7A0B;&#x5E8F;&#x53D1;&#x751F; panic &#x65F6;&#x9700;&#x8981;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x51FD;&#x6570;&#x3002;&#x6807;&#x51C6;&#x5E93;&#x6709;&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; no_std &#x5C5E;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> core::panic::PanicInfo;
+<span class="hljs-comment">// This function is called on panic.</span>
+<span class="hljs-meta">#[panic_handler]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">panic</span></span>(_info: &amp;PanicInfo) -&gt; ! {
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x7A0B;&#x5E8F; panic &#x540E;&#x5C31;&#x5E94;&#x8BE5;&#x7ED3;&#x675F;&#xFF0C;&#x6240;&#x4EE5;&#x7528; -&gt; ! &#x8868;&#x793A;&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x3002;&#x7531;&#x4E8E;&#x76EE;&#x524D;&#x7684; OS &#x529F;&#x80FD;&#x8FD8;&#x5F88;&#x5F31;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x4E86;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A; error &#x540E;&#xFF0C;&#x518D;&#x6B21;&#x6267;&#x884C; <code>cargo build</code> &#xFF0C;&#x7ED3;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x65B0;&#x7684; error&#xFF1A;</p>
+<pre><code>error: language item required, but not found: `eh_personality`
+</code></pre><h3 id="fix-error-language-item-required-but-not-found-ehpersonality"><a name="fix-error-language-item-required-but-not-found-ehpersonality" class="anchor-navigation-ex-anchor" href="#fix-error-language-item-required-but-not-found-ehpersonality"><i class="fa fa-link" aria-hidden="true"></i></a>FIX error: language item required, but not found: &apos;eh_personality&apos;</h3>
+<p><strong>eh_personality</strong> &#x8BED;&#x4E49;&#x9879;&#xFF08;language item&#xFF09;&#x662F; exception handling personality &#x7684;&#x610F;&#x601D;&#x3002;
+&#x6211;&#x4EEC;&#x4E0D;&#x4F7F;&#x7528;&#x8BE5;&#x9879;&#xFF0C;&#x6545;&#x76F4;&#x63A5;&#x5C06; dev (use for <code>cargo build</code>) &#x548C; release (use for <code>cargo build --release</code>) &#x7684; panic &#x7684;&#x5904;&#x7406;&#x7B56;&#x7565;&#x8BBE;&#x4E3A; abort&#x3002;</p>
+<pre><code class="lang-rust"># <span class="hljs-keyword">in</span> Cargo.toml
+
+[profile.dev]
+panic = <span class="hljs-string">&quot;abort&quot;</span>
+
+[profile.release]
+panic = <span class="hljs-string">&quot;abort&quot;</span>
+
+<span class="hljs-comment">// in main.rs</span>
+
+<span class="hljs-meta">#[no_mangle]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">extern</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">abort</span></span>() {
+    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;abort!&quot;</span>);
+}
+</code></pre>
+<blockquote>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x5F53;&#x7A0B;&#x5E8F;&#x51FA;&#x73B0;&#x4E86;&#x5F02;&#x5E38; (&#x8FD9;&#x91CC;&#x6307;&#x7C7B;&#x4F3C; Java &#x4E2D;&#x5C42;&#x5C42;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;)&#xFF0C;&#x4ECE;&#x5F02;&#x5E38;&#x70B9;&#x5F00;&#x59CB;&#x4F1A;&#x6CBF;&#x7740; caller &#x8C03;&#x7528;&#x6808;&#x4E00;&#x5C42;&#x4E00;&#x5C42;&#x56DE;&#x6EAF;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x6355;&#x83B7; (catch) &#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A; <strong>&#x5806;&#x6808;&#x5C55;&#x5F00; (stack unwinding)</strong>
+&#x56DE;&#x6EAF;&#x7684;&#x65F6;&#x5019;&#xFF0C; caller &#x4E2D;&#x4E5F;&#x8BB8;&#x4F1A;&#x6709;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x6E05;&#x7406;&#xFF0C;&#x6BD4;&#x5982; C++ &#x7684; RAII &#x7684;&#x6790;&#x6784;&#x6216;&#x8005; Rust &#x7684; drop
+exception handling personality &#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A; caller &#x51FD;&#x6570;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;
+&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x4F9D;&#x8D56;&#x5176;&#x4ED6;&#x5404;&#x79CD;&#x5E93;&#x6587;&#x4EF6;</p>
+<p>&#x4E0A;&#x9762;&#x8BBE;&#x7F6E;&#x4E3A; abort &#xFF0C;&#x662F;&#x6307; OS panic &#x65F6;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x6E05;&#x7406;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x8FD9;&#x6837;&#x76F8;&#x5BF9;&#x7B80;&#x5355;</p>
+</blockquote>
+<p>&#x518D;&#x6B21;&#x8FD0;&#x884C; <code>cargo build</code> &#xFF0C;&#x53D1;&#x73B0;&#x51FA;&#x73B0;&#x4E86;&#x65B0;&#x7684; error&#xFF1A;</p>
+<pre><code>error: requires `start` lang_item
+</code></pre><h3 id="fix-error-requires-start-langitem"><a name="fix-error-requires-start-langitem" class="anchor-navigation-ex-anchor" href="#fix-error-requires-start-langitem"><i class="fa fa-link" aria-hidden="true"></i></a>FIX error: requires &apos;start&apos; lang_item</h3>
+<p>&#x5BF9;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x8BED;&#x8A00;&#xFF0C;&#x4ED6;&#x4EEC;&#x90FD;&#x4F7F;&#x7528;&#x4E86; <strong>&#x8FD0;&#x884C;&#x65F6;&#x7CFB;&#x7EDF;(runtime system)</strong> &#xFF0C;&#x8FD9;&#x5BFC;&#x81F4; main &#x5E76;&#x4E0D;&#x662F;&#x4ED6;&#x4EEC;&#x6267;&#x884C;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4EE5; rust &#x8BED;&#x8A00;&#x4E3A;&#x4F8B;&#xFF1A;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684; rust &#x7A0B;&#x5E8F;&#x4F1A;&#x5148;&#x94FE;&#x63A5;&#x6807;&#x51C6;&#x5E93;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C; C runtime library &#x4E2D;&#x7684; <strong>crt0(C runtime zero)</strong> &#x8BBE;&#x7F6E; C &#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x6240;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;(&#x6BD4;&#x5982;&#xFF1A;&#x521B;&#x5EFA;&#x5806;&#x6808;&#xFF0C;&#x8BBE;&#x7F6E;&#x5BC4;&#x5B58;&#x5668;&#x53C2;&#x6570;&#x7B49;)&#x3002;&#x7136;&#x540E; C runtime &#x4F1A;&#x8C03;&#x7528; rust runtime &#x7684; <strong>&#x5165;&#x53E3;&#x70B9;(entry point)</strong> &#x3002;rust runtime &#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x8C03;&#x7528; main &#x3002;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE; rust runtime &#x548C; crt0 &#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x91CD;&#x5199;&#x8986;&#x76D6; crt0 &#x5165;&#x53E3;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-rust"><span class="hljs-meta">#![no_std]</span> <span class="hljs-comment">// don&apos;t link the Rust standard library</span>
+<span class="hljs-meta">#![no_main]</span> <span class="hljs-comment">// disable all Rust-level entry points</span>
+
+<span class="hljs-keyword">use</span> core::panic::PanicInfo;
+<span class="hljs-comment">// This function is called on panic.</span>
+<span class="hljs-meta">#[panic_handler]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">panic</span></span>(_info: &amp;PanicInfo) -&gt; ! {
+    <span class="hljs-keyword">loop</span> {}
+}
+
+<span class="hljs-meta">#[no_mangle]</span> <span class="hljs-comment">// don&apos;t mangle the name of this function</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">_start</span></span>() -&gt; ! {
+    <span class="hljs-comment">// this function is the entry point, since the linker looks for a function named `_start` by default</span>
+    <span class="hljs-keyword">loop</span> {}
+}
+</code></pre>
+<blockquote>
+<p>&#x9002;&#x7528;&#x4E8E; Linux &#xFF0C;&#x5728;&#x5176;&#x4ED6;&#x7CFB;&#x7EDF;&#x8BF7; <a href="https://os.phil-opp.com/freestanding-rust-binary/#summary" target="_blank">&#x53C2;&#x8003; phil-opp &#x7684;&#x535A;&#x5BA2;</a> &#x3002;&#x6682;&#x65F6;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x4E5F;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0B;&#x4E00;&#x7AE0;&#x4F1A;&#x91CD;&#x5199; <code>_start</code> &#x51FD;&#x6570;</p>
+</blockquote>
+<p><strong>#[no_mangle]</strong> &#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x9632;&#x6B62;&#x6539;&#x540D;&#x79F0;&#x88AB;&#x6DF7;&#x6DC6;&#x3002;&#x7531;&#x4E8E; start &#x53EA;&#x80FD;&#x7531;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6216;&#x5F15;&#x5BFC;&#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x591F;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x79BB;&#x5F00;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; exit &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8FD8;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; exit &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6682;&#x65F6;&#x4F7F;&#x7528;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x9632;&#x6B62;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x3002;&#x7531;&#x4E8E; start &#x51FD;&#x6570;&#x65E0;&#x6CD5;&#x8FD4;&#x56DE;&#x6216;&#x9000;&#x51FA;&#xFF0C;&#x81EA;&#x7136;&#x4E5F;&#x5C31;&#x4E0D;&#x4F1A;&#x8C03;&#x7528; main &#x3002;&#x6240;&#x4EE5;&#x5C06; main &#x51FD;&#x6570;&#x5220;&#x9664;&#xFF0C;&#x5E76;&#x4E14;&#x589E;&#x52A0;&#x5C5E;&#x6027;&#x6807;&#x7B7E; <strong>#![no_main]</strong> &#x3002;</p>
+<p>&#x518D;&#x6B21;&#x6267;&#x884C; <code>cargo build</code> &#xFF0C;&#x5F88;&#x4E0D;&#x5E78;&#xFF0C;&#x53C8;&#x51FA;&#x73B0;&#x4E86; error&#xFF1A;</p>
+<pre><code class="lang-rust">linking with `cc` failed: exit code: <span class="hljs-number">1</span>
+</code></pre>
+<p>&#x4F46;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x672C;&#x7AE0;&#x6240;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A; error!</p>
+<h3 id="fix-error-linking-with-cc-failed-exit-code-1"><a name="fix-error-linking-with-cc-failed-exit-code-1" class="anchor-navigation-ex-anchor" href="#fix-error-linking-with-cc-failed-exit-code-1"><i class="fa fa-link" aria-hidden="true"></i></a>FIX error: linking with &apos;cc&apos; failed: exit code: 1</h3>
+<p>&#x5728;&#x94FE;&#x63A5; C runtime &#x65F6;&#xFF0C;&#x4F1A;&#x9700;&#x8981;&#x4E00;&#x4E9B; C &#x6807;&#x51C6;&#x5E93;(libc)&#x7684;&#x5185;&#x5BB9;&#x3002;&#x7531;&#x4E8E; <strong>#![no_std]</strong> &#x7981;&#x7528;&#x4E86;&#x6807;&#x51C6;&#x5E93;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7981;&#x7528;&#x5E38;&#x89C4;&#x7684; C &#x542F;&#x52A8;&#x4F8B;&#x7A0B;&#x3002;
+&#x4E8E;&#x662F;&#x5C06;&#x4E4B;&#x524D;&#x7684; <code>cargo build</code> &#x6362;&#x6210;&#x5982;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x5C31;&#x597D;&#x5566;&#xFF1A;</p>
+<pre><code>&gt; cargo rustc -- -C link-arg=-nostartfiles
+   Compiling os v0.1.0 (/mnt/os)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.21s
+</code></pre><blockquote>
+<p>&#x9002;&#x7528;&#x4E8E; Linux &#xFF0C;&#x5728;&#x5176;&#x4ED6;&#x7CFB;&#x7EDF;&#x8BF7; <a href="https://os.phil-opp.com/freestanding-rust-binary/#summary" target="_blank">&#x53C2;&#x8003; phil-opp &#x7684;&#x535A;&#x5BA2;</a> &#x3002;&#x6682;&#x65F6;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x4E5F;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E5F;&#x7528;&#x4E0D;&#x5230;&#x3002;</p>
+</blockquote>
+<p>&#x751F;&#x6210;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x5728; <code>target/debug/</code> &#x4E2D;&#xFF0C;&#x5728; <code>Cargo.toml</code> &#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x770B;&#x5230;</p>
+<pre><code>$ ls target/debug/os -l
+-rwxr-xr-x 2 dzy dzy 10680 Aug  1 16:55 target/debug/os
+</code></pre><p>&#x5386;&#x7ECF;&#x5343;&#x8F9B;&#x4E07;&#x82E6;&#xFF0C;&#x6211;&#x4EEC;&#x7EC8;&#x4E8E;&#x6210;&#x529F;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; <strong>Freestanding Rust Binary</strong> &#xFF01;&#xFF01;&#xFF01;</p>
+<blockquote>
+<p>&#x5C3D;&#x7BA1;&#x5B83;&#x73B0;&#x5728;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x529F;&#x80FD;</p>
+</blockquote>
+<h2 id="&#x9884;&#x544A;"><a name="&#x9884;&#x544A;" class="anchor-navigation-ex-anchor" href="#&#x9884;&#x544A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x9884;&#x544A;</h2>
+<p>&#x4E0B;&#x4E00;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728; <strong>Freestanding Rust Binary</strong> &#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x521B;&#x5EFA; <strong>&#x6700;&#x5C0F;&#x5185;&#x6838;</strong> &#xFF0C;&#x5C06;&#x5176;&#x548C; <strong>bootloader</strong> &#x94FE;&#x63A5;&#x6210;&#x4E3A;&#x53EF;&#x4EE5;&#x88AB; qemu &#x52A0;&#x8F7D;&#x7684; <strong>bootimage</strong> &#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x80FD;&#x591F;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x6253;&#x5370; <strong>Hello World</strong> !</p>
+<p><div id="page-footer" class="localized-footer"><hr><p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="margin: 5%"></div>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6fb135ae71db34448a92',
+    clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+    repo: 'rcore_step_by_step_doc',
+    owner: 'LearningOS',
+    admin: ['xy-plus'],
+    createIssueManually: true,
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+<script>
+  require(['gitbook'], function(gitbook) {
+    const gitalk = new Gitalk({
+      clientID: '6fb135ae71db34448a92',
+      clientSecret: '13668f3df4129768b985879e1456d5a0844dc65f',
+      repo: 'rcore_step_by_step_doc',
+      owner: 'LearningOS',
+      admin: ['xy-plus'],
+      createIssueManually: true,
+      id: document.title
+    })
+    gitbook.events.bind('page.change', initMygitalk)
+    function initMygitalk() {
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+</div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 0. 从零开始写 OS">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="最小化内核.html" class="navigation navigation-next " aria-label="Next page: 2. 最小化内核">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1. 独立式可执行程序","level":"1.2","depth":1,"next":{"title":"2. 最小化内核","level":"1.3","depth":1,"path":"docs/最小化内核.md","ref":"docs/最小化内核.md","articles":[]},"previous":{"title":"0. 从零开始写 OS","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","code","search-pro","github","localized-footer","ancre-navigation","-sharing"],"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/LearningOS/rcore_step_by_step"},"search-pro":{},"search":{},"localized-footer":{"filename":"gitbook/comment.html","hline":"true"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ancre-navigation":{"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showLevel":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"gitbook/website.css"}},"file":{"path":"docs/独立式可执行程序.md","mtime":"2019-10-13T07:50:27.015Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-26T04:21:41.332Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
